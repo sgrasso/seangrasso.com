@@ -1,0 +1,17 @@
+{
+  "server": {
+    "app": {
+      "slogan": "Web Developer Shall Rule The Earth"
+    }
+  },
+  "connections": [
+    {
+      "port": "3000"
+    }
+  ]
+  // "plugins": {
+  //   "./features/home": null,
+  //   "./features/warranty/v1": null,
+  //   "./models": null
+  // }
+}
