@@ -8,13 +8,12 @@ Glue.compose(manifest, options, function (err, server) {
 
 	server.views({
 	    engines: {
-	        dust: require('dust')
+	        jade: require('jade')
 	    },
 	    relativeTo: __dirname,
 	    path: './server/templates',
-	    layout: 'default.dust',
-	    layoutPath: './server/templates/layouts'
-	    // helpersPath: './server/templates/helpers'
+	    layoutPath: './server/templates/layouts',
+	    partialsPath: './server/templates/partials'
 	});	
 
 	server.start(function (err) {

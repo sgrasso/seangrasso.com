@@ -3,7 +3,6 @@ module.exports = function (request, reply) {
 		pageTitle: 'Home Page'
 	};
 
-	reply.view("home",context, {layout: "iso"})
+	reply.view("home",context)
 
-	reply();
 };
