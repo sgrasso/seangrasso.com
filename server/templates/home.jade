@@ -1,4 +1,20 @@
 extends ./layouts/default.jade
 
 block content
-	h2 home page content
+	// Section : Home
+    section#home.parallax(style="background-image: url('http://placehold.it/1920x900');", data-stellar-background-ratio='0.6', data-stellar-vertical-offset='20')
+      .parallax-overlay
+        .container
+          .col-md-12
+            // Personal Info
+            .avater(style="background-image: url('http://placehold.it/294x294');background-size: cover;")
+            .info
+              h1 Sean Grasso
+              h2 Designer. Developer. 
+            // Personal Info end
+            // View more
+            .gotosection
+              a(href='#about')
+                i.fa.fa-angle-double-down
+            // View more end
+    // Section : Home end
