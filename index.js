@@ -17,7 +17,17 @@ Glue.compose(manifest, options, function (err, server) {
 	    layoutPath: './server/templates/layouts',
 	    partialsPath: './server/templates/partials'
 	});	
-console.log(server)
+
+	server.route({
+	    method: 'GET',
+	    path: '/public/{param*}',
+	    handler: {
+	        directory: {
+	            path: 'public'
+	        }
+	    }
+	});
+
 	server.start(function (err) {
 		console.log('Server running at:', server.info.uri);
 	});
