@@ -1,17 +1,16 @@
 doctype html
 html
 head
-    link(rel='stylesheet', href='/public/css/styles.css')
-
+	link(rel='stylesheet', href='/public/css/styles.css')
+	block css
 body
-    //- .mask
-    //-   .bubblingG
-    //-     span#bubblingG_1
-    //-     span#bubblingG_2
-    //-     span#bubblingG_3
+	div#page-wrapper
+		block header
+		
+		block content
+		
+	footer
+		.container
+		.copyright ©2014 Sean Grasso All rights reserved.
 
-    block content
-
-    footer
-      .container
-        .copyright  ©2014 Sean Grasso All rights reserved.
+	block js

@@ -4,6 +4,6 @@ module.exports = function (request, reply) {
 		pageTitle: 'Home Page'
 	};
 	
-	reply.view('home',context);
+	reply.view('home', context);
 
 };
