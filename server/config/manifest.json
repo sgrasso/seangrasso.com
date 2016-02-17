@@ -2,6 +2,11 @@
   "server": {
     "app": {
       "slogan": "Web Developer Shall Rule The Earth"
+    },
+    "connections": {
+      "router": {
+        "stripTrailingSlash": true
+      }
     }
   },
   "connections": [
@@ -9,9 +14,30 @@
       "port": "3000"
     }
   ],
-  "plugins": [
-    {"./views/home": null},
-    { "inert": [{}] },
-    { "vision": [{}] }
+  "registrations": [  
+    {
+      "plugin": {
+          "register": "./views/home",
+          "options": {}
+      }
+    },
+    {
+      "plugin": {
+          "register": "./views/subview",
+          "options": {}
+      }
+    },
+    {
+      "plugin": {
+          "register": "inert",
+          "options": {}
+      }
+    },
+    {
+      "plugin": {
+          "register": "vision",
+          "options": {}
+      }
+    }
   ]
 }

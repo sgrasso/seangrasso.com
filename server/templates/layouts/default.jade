@@ -29,14 +29,21 @@ head
 	block css
 
 body
-	//- .mask
-	//- 	.bubblingG
-	//- 		span#bubblingG_1
-	//- 		span#bubblingG_2
-	//- 		span#bubblingG_3
-	div#page-wrapper
 
-		block header
+	div#page-wrapper
+		section#home.parallax(style="background-image: url('http://placehold.it/1920x900');", data-stellar-background-ratio='0.6', data-stellar-vertical-offset='20')
+			.parallax-overlay
+				.container
+					.col-md-12
+						.avater(style="background-image: url('http://placehold.it/294x294');background-size: cover;")
+						.info
+							h1 Sean Grasso
+							h2 Designer. Developer. 
+						.gotosection
+							a(href='#about')
+								i.fa.fa-angle-double-down
+		div#undefined-sticky-wrapper.sticky-wrapper(style="height: 70px;")
+			include ../partials/mainNav.jade
 		
 		block content
 		

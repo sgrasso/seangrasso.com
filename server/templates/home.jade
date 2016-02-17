@@ -1,30 +1,16 @@
 extends layouts/default.jade
 
-block header
-		section#home.parallax(style="background-image: url('http://placehold.it/1920x900');", data-stellar-background-ratio='0.6', data-stellar-vertical-offset='20')
-			.parallax-overlay
-				.container
-					.col-md-12
-						.avater(style="background-image: url('http://placehold.it/294x294');background-size: cover;")
-						.info
-							h1 Sean Grasso
-							h2 Designer. Developer. 
-						.gotosection
-							a(href='#about')
-								i.fa.fa-angle-double-down
-		div#undefined-sticky-wrapper.sticky-wrapper(style="height: 70px;")
-			include partials/mainNav.jade
 block content
-		include partials/about.jade
-		include partials/parallax/status.jade
-		include partials/resume.jade
-		include partials/skills.jade
-		include partials/parallax/quote.jade
-		include partials/services.jade
-		include partials/parallax/work.jade
-		include partials/portfolio.jade
-		include partials/parallax/hire.jade
-		include partials/clients.jade
-		include partials/blogPreview.jade
-		include partials/parallax/twitter.jade
-		include partials/contact.jade
+	include partials/about.jade
+	include partials/parallax/status.jade
+	include partials/resume.jade
+	include partials/skills.jade
+	include partials/parallax/quote.jade
+	include partials/services.jade
+	include partials/parallax/work.jade
+	include partials/portfolio.jade
+	include partials/parallax/hire.jade
+	include partials/clients.jade
+	include partials/blogPreview.jade
+	include partials/parallax/twitter.jade
+	include partials/contact.jade
