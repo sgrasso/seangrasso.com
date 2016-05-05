@@ -1,43 +1,64 @@
 {
-  "server": {
-    "app": {
-      "slogan": "Web Developer Shall Rule The Earth"
-    },
-    "connections": {
-      "router": {
-        "stripTrailingSlash": true
-      }
-    }
-  },
-  "connections": [
-    {
-      "port": "3000"
-    }
-  ],
-  "registrations": [  
-    {
-      "plugin": {
-          "register": "./views/home",
-          "options": {}
-      }
-    },
-    {
-      "plugin": {
-          "register": "./views/subview",
-          "options": {}
-      }
-    },
-    {
-      "plugin": {
-          "register": "inert",
-          "options": {}
-      }
-    },
-    {
-      "plugin": {
-          "register": "vision",
-          "options": {}
-      }
-    }
-  ]
+	"server": {
+		"app": {
+			"slogan": "Web Developer Shall Rule The Earth"
+		},
+		"connections": {
+			"router": {
+				"stripTrailingSlash": true
+			}
+		}
+	},
+	"connections": [],
+	"registrations": [
+		{
+			"plugin": {
+				"register": "./views/home",
+				"options": {}
+			}
+		},
+		{
+			"plugin": {
+				"register": "./views/subview",
+				"options": {}
+			}
+		},
+		{
+			"plugin": {
+				"register": "inert",
+				"options": {}
+			}
+		},
+		{
+			"plugin": {
+				"register": "vision",
+				"options": {}
+			}
+		},
+		{
+			"plugin": {
+				"register": "good",
+				"options": {
+					"opsInterval": 5000,
+					"requestHeaders": true,
+					"reporters": [
+						{
+							"reporter": "good-console",
+							"events": { "response": "*", "ops": "*", "log": "*", "error": "*" }
+						},
+						{
+							"reporter": "good-file",
+							"events": { "response": "*", "error": "*" },
+							"config": "/log/response.log"
+						},
+						{
+							"reporter": "good-file",
+							"events": { "ops": "*" },
+							"config": "/log/ops.log"
+						}
+					]
+				}
+			}
+		}
+	]
 }

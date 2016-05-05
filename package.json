@@ -4,7 +4,14 @@
   "description": "Personal Site",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "start-dev": "npm run watch",
+    "watch": "npm run watch-server & npm run watch-assets",
+    "watch-server": "nodemon --ignore public/ index.js",
+    "watch-assets": "npm run watch-js",
+    "watch-js": "watchify  server/views/**/client.js | uglifyjs server/views/home/client.js server/views/subview/client.js -o public/js/main.min.js",
+    "build-css": "./bin/build-css", 
+    "watch-css": "nodemon -e scss -x \"npm run build-css\""
   },
   "author": "Sean Grasso",
   "license": "MIT",
@@ -14,12 +21,12 @@
   "dependencies": {
     "glue": "3.x.x",
     "hapi": "13.x.x",
-    "hoek": "3.x.x",
     "inert": "3.x.x",
     "jade": "1.x.x",
     "vision": "4.x.x"
   },
   "devDependencies": {
-    "grunt": "^0.4.5"
+    "uglify-js": "2.6.2",
+    "watchify": "^3.7.0"
   }
 }
