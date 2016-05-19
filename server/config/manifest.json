@@ -39,24 +39,39 @@
 			"plugin": {
 				"register": "good",
 				"options": {
-					"opsInterval": 5000,
-					"requestHeaders": true,
-					"reporters": [
-						{
-							"reporter": "good-console",
-							"events": { "response": "*", "ops": "*", "log": "*", "error": "*" }
-						},
-						{
-							"reporter": "good-file",
-							"events": { "response": "*", "error": "*" },
-							"config": "/log/response.log"
-						},
-						{
-							"reporter": "good-file",
-							"events": { "ops": "*" },
-							"config": "/log/ops.log"
-						}
-					]
+					"ops": {
+						"interval": 5000
+					},
+					"reporters": {
+						"console": [{
+							"module": "good-squeeze",
+							"name": "Squeeze",
+							"args": [{ "log": "*", "response": "*" }]
+						}, {
+							"module": "good-console"
+						}, "stdout"],
+						"file": [{
+							"module": "good-squeeze",
+							"name": "Squeeze",
+							"args": [{ "ops": "*" }]
+						}, {
+							"module": "good-squeeze",
+							"name": "SafeJson",
+							"args": [
+						        null,
+						        { "separator": "," }
+						    ]
+						}, {
+						    "module": "rotating-file-stream",
+						    "args": [
+						        "ops_log",
+						        {
+						            "size": "1000B",
+						            "path": "./logs"
+						        }
+						    ]
+						}]
+					}
 				}
 			}
 		}
