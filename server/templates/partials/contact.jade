@@ -3,92 +3,20 @@ section#contact.section
 	.container
 		//- section title
 		.section-title
-			h1 Contact with me
+			h1 Connect with me
 			span.border
 			p
 				| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation ullamco .
 		//- section title end
 		.row
-			.col-md-6
-				h2 LET'S GET IN TOUCH
-				ul.get_in
-					li
-						i.fa.fa-envelope-o
-						p hello@metrothemes.me
-					li
-						i.fa.fa-phone
-						p +0123 456 789
-					li
-						i.fa.fa-map-marker
-						p 21 Cool Street, Melbourne Victoria 3000 Australia
-					li
-						a(href='#')
-							i.fa.fa-cloud-download
-							p Download Vcard
+			.col-md-4.get_in
+				i.fa.fa-envelope-o
+				h4 sean.grasso@gmail.com
+			.col-md-4.get_in
+				i.fa.fa-map-marker
+				h4 Cleveland, Ohio
+			.col-md-4.get_in
 				//- social Icons
-				ul.social
-					li
-						a.facebook(href='#')
-					li
-						a.twitter(href='#')
-					li
-						a.linkedin(href='#')
-					li
-						a.google(href='#')
-					li
-						a.vimeo(href='#')
-					li
-						a.github(href='#')
-					li
-						a.behance(href='#')
-					li
-						a.dribble(href='#')
-					li
-						a.instagram(href='#')
-					li
-						a.lastfm(href='#')
-					li
-						a.rss(href='#')
-					li
-						a.vimeo(href='#')
-					li
-						a.forrst(href='#')
-					li
-						a.pinterest(href='#')
-					li
-						a.skype(href='#')
-					li
-						a.picassa(href='#')
-					li
-						a.youtube(href='#')
-					li
-						a.flickr(href='#')
-					li
-						a.tumblr(href='#')
-					li
-						a.blogger(href='#')
-					li
-						a.delicious(href='#')
-					li
-						a.digg(href='#')
-					li
-						a.friendfeed(href='#')
-					li
-						a.wordpress(href='#')
-				//- social Icons end
-			.col-md-6
-				h2 DROP ME A LINE
-				//- contact from
-				form#form.form(method='post', action='contact.php')
-					input(type='text', name='name', placeholder='Name', required='')
-					input(type='text', name='email', placeholder='Email', required='')
-					textarea(name='message', placeholder='Message', rows='8')
-					input#submit.mt-button.medium.outline(type='submit', value='Send Message')
-				span.sending
-					| sending...
-				.mess.center
-				//- contact from end
-			//- Google maps
-			#gmap.gmap.col-md-12
-			//- Google maps end
+				include social.jade
+			//- contact from end
 //- Section : Contact end

@@ -1,62 +1,56 @@
 doctype html
 html
-head
-	meta(charset='utf-8')
-	meta(name='viewport', content='width=device-width, initial-scale=1.0')
-	meta(name='description', content='My personal site')
-	meta(name='keywords', content='nodejs, node, javascript, web development, Sean Grasso')
-	meta(name='author', content='Sean Grasso')
+	head
+		meta(charset='utf-8')
+		meta(name='viewport', content='width=device-width, initial-scale=1.0')
+		meta(name='description', content='My personal site')
+		meta(name='keywords', content='nodejs, node, javascript, web development, Sean Grasso')
+		meta(name='author', content='Sean Grasso')
 
-	title #{pageTitle}
-	//- link(rel='shortcut icon', href='img/icons/favicon.ico')
-	//- link(rel='apple-touch-icon', href='img/icons/apple-touch-icon.png')
-	//- link(rel='apple-touch-icon', sizes='72x72', href='img/icons/apple-touch-icon-72x72.png')
-	//- link(rel='apple-touch-icon', sizes='114x114', href='img/icons/apple-touch-icon-114x114.png')
-	//if lt IE 9
-		script(src='http://html5shim.googlecode.com/svn/trunk/html5.js')
-	link(rel='stylesheet', href='/public/css/styles.css')
-	link(rel='stylesheet', media='screen', href='/public/css/bootstrap.css')
-	link(rel='stylesheet', href='/public/css/font-awesome/css/font-awesome.css')
-	link(rel='stylesheet', type='text/css', href='/public/css/fontello/css/fontello.css')
-	link(rel='stylesheet', media='screen', href='/public/css/styles.css')
-	link(rel='stylesheet', type='text/css', href='/public/css/animate.css')
-	link(rel='stylesheet', type='text/css', href='/public/css/owl.carousel.css')
-	link(rel='stylesheet', type='text/css', href='/public/css/owl.theme.css')
-	link(rel='stylesheet', type='text/css', href='/public/css/responsive.css')
-	link(rel='stylesheet', type='text/css', href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Montserrat:400,700')
-	link(href='http://fonts.googleapis.com/css?family=Pacifico', rel='stylesheet', type='text/css')
+		title #{pageTitle}
+		//- link(rel='shortcut icon', href='img/icons/favicon.ico')
+		//- link(rel='apple-touch-icon', href='img/icons/apple-touch-icon.png')
+		//- link(rel='apple-touch-icon', sizes='72x72', href='img/icons/apple-touch-icon-72x72.png')
+		//- link(rel='apple-touch-icon', sizes='114x114', href='img/icons/apple-touch-icon-114x114.png')
+		//if lt IE 9
+			script(src='http://html5shim.googlecode.com/svn/trunk/html5.js')
+		link(rel='stylesheet', href='/public/css/styles.min.css')
+		link(rel='stylesheet', type='text/css', href='http://fonts.googleapis.com/css?family=Open 	+Sans:300,400,600,700,800|Montserrat:400,700')
+		link(href='http://fonts.googleapis.com/css?family=Pacifico', rel='stylesheet', type='text/css')
 
-	block css
+		block css
 
-body
+	body
 
-	.mask
-		.bubblingG
-			span#bubblingG_1
-			span#bubblingG_2
-			span#bubblingG_3
+		.mask
+			.bubblingG
+				span#bubblingG_1
+				span#bubblingG_2
+				span#bubblingG_3
 
-	div#page-wrapper
-		section#home.parallax(style="background-image: url('http://placehold.it/1920x900');", data-stellar-background-ratio='0.6', data-stellar-vertical-offset='20')
-			.parallax-overlay
+		div#page-wrapper
+			section#home.parallax(style="background-image: url('http://placehold.it/1920x900');", data-stellar-background-ratio='0.6', data-stellar-vertical-offset='20')
+				.parallax-overlay
+					.container
+						.col-md-12
+							.avater(style="background-image: url('http://placehold.it/294x294');background-size: cover;")
+							.info
+								h1 Sean Grasso
+								h2 Developer. Father. Javascript Guru 
+								include ../partials/social
+							.gotosection
+								a(href='#top')
+									i.fa.fa-angle-double-down
+			div#undefined-sticky-wrapper.sticky-wrapper(style="height: 70px;")
+				| !{nav}
+			div#top
+				
+			block content
+				
+			footer
 				.container
-					.col-md-12
-						.avater(style="background-image: url('http://placehold.it/294x294');background-size: cover;")
-						.info
-							h1 Sean Grasso
-							h2 Designer. Developer. 
-						.gotosection
-							a(href='#about')
-								i.fa.fa-angle-double-down
-		div#undefined-sticky-wrapper.sticky-wrapper(style="height: 70px;")
-			include ../partials/mainNav.jade
-		
-		block content
-		
-	footer
-		.container
-		.copyright ©2014 Sean Grasso All rights reserved.
+					.copyright ©2016 Sean Grasso All rights reserved.
 
-	script(src='http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.js')
-	script(src='/public/js/main.min.js')
-	block js
+		script(src='http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.js')
+		script(src='/public/js/main.min.js')
+		block js

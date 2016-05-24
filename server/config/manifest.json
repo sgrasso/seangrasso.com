@@ -46,7 +46,7 @@
 						"console": [{
 							"module": "good-squeeze",
 							"name": "Squeeze",
-							"args": [{ "log": "*", "response": "*" }]
+							"args": [{ "log": "*", "response": "*"}]
 						}, {
 							"module": "good-console"
 						}, "stdout"],
@@ -58,18 +58,19 @@
 							"module": "good-squeeze",
 							"name": "SafeJson",
 							"args": [
-						        null,
-						        { "separator": "," }
-						    ]
+								null,
+								{ "separator": "," }
+							]
 						}, {
-						    "module": "rotating-file-stream",
-						    "args": [
-						        "ops_log",
-						        {
-						            "size": "1000B",
-						            "path": "./logs"
-						        }
-						    ]
+							"module": "rotating-file-stream",
+							"args": [
+								"ops_log",
+								{
+									"size": "5M",
+									"interval": "5d",
+									"path": "./logs"
+								}
+							]
 						}]
 					}
 				}

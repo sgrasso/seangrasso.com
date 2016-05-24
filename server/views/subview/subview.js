@@ -3,17 +3,23 @@ var jade = require('jade');
 var Path = require('path');
 
 module.exports = function (request, reply) {
-	var html = '';
-	var partial = Path.join('./server/templates/partials', request.params.subview + '.jade');
-	var exists = fs.existsSync(partial);
+	var view = '';
+	var nav = '';
+	var viewPartial = Path.join('./server/templates/partials', request.params.subview + '.jade');
+	var navPartial = './server/templates/partials/subNav.jade';
 
-	if (exists){
-		html = jade.renderFile(partial, {});
+	if (fs.existsSync(viewPartial)){
+		view = jade.renderFile(viewPartial, {});
+	}
+
+	if (fs.existsSync(navPartial)){
+		nav = jade.renderFile(navPartial, {});
 	}
 	
 	var context = {
 		pageTitle: request.params.subview + ' Page',
-		partial: html
+		partial: view,
+		nav: nav
 	};
 	
 	reply.view('subview', context);

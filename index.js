@@ -1,4 +1,3 @@
-var debug = require('debug')('main:index');
 var Path = require('path');
 var Glue = require('glue');
 var manifest = require('./server/config/manifest.json');
@@ -23,12 +22,7 @@ Glue.compose(manifest, options, function (err, server) {
 		compileOptions: {
 			pretty: true
 		}
-		// compileMode: 'async'
 	});	
-
-	server.on('request-error', (request, e) =>{
-		debug('Error response (500) sent for request: ' + request.id + ' because: ' + err.message);
-	});
 
 	server.start(function (err) {
 		console.log('Server running at:', port, 'as', process.env.NODE_ENV);
