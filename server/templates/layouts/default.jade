@@ -14,8 +14,9 @@ html
 		//- link(rel='apple-touch-icon', sizes='114x114', href='img/icons/apple-touch-icon-114x114.png')
 		//if lt IE 9
 			script(src='http://html5shim.googlecode.com/svn/trunk/html5.js')
-		link(rel='stylesheet', href='/public/css/styles.min.css')
-		link(rel='stylesheet', type='text/css', href='http://fonts.googleapis.com/css?family=Open 	+Sans:300,400,600,700,800|Montserrat:400,700')
+		link(rel='stylesheet', media='screen', href='/public/css/styles.min.css')
+		link(rel='stylesheet', media='screen', href='/public/css/color-orange.css')
+		link(rel='stylesheet', type='text/css', href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Montserrat:400,700')
 		link(href='http://fonts.googleapis.com/css?family=Pacifico', rel='stylesheet', type='text/css')
 
 		block css
@@ -29,14 +30,14 @@ html
 				span#bubblingG_3
 
 		div#page-wrapper
-			section#home.parallax(style="background-image: url('http://placehold.it/1920x900');", data-stellar-background-ratio='0.6', data-stellar-vertical-offset='20')
+			section#home.parallax(style="background-image: url('/public/img/Cleveland_skyline_from_the_Flats_modified.jpg');", data-stellar-background-ratio='0.6', data-stellar-vertical-offset='20')
 				.parallax-overlay
 					.container
 						.col-md-12
 							.avater(style="background-image: url('http://placehold.it/294x294');background-size: cover;")
 							.info
 								h1 Sean Grasso
-								h2 Developer. Father. Javascript Guru 
+								h2 Full Stack Javascript Developer
 								include ../partials/social
 							.gotosection
 								a(href='#top')

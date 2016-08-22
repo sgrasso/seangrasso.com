@@ -27,8 +27,8 @@
 	// TODO: proper selector.
 	$('*').each(function(){
 		var $this = $(this);
-		if($this.attr('data-animation')) {
-			var $animationName = $this.attr('data-animation');
+		var $animationName = $this.attr('data-animation');
+		if($animationName) {
 			$this.appear(function() {
 				$this.addClass('animated').addClass($animationName);
 			});
@@ -71,7 +71,7 @@
 			});
 		});
 	});
-
+$(window).load(function(){
 	//Responsive slide For blog
 	$('#blog-carousel').owlCarousel({
 		autoPlay: 3000,
@@ -83,8 +83,8 @@
 
 	//Masonry Blog
 	$('.blog-post-holder', '#blog').isotope({
-		layoutMode: 'fitRows'
 		percentPosition: true,
+		masonry: {}, 
 		animationOptions: {
 			duration: 750,
 			easing: 'linear',
@@ -131,5 +131,6 @@
 
 		return false;
 	});
+});
 
 })(jQuery);
