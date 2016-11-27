@@ -25,39 +25,44 @@
 
 	// Appear Animations 
 	// TODO: proper selector.
-	$('*').each(function(){
-		var $this = $(this);
-		var $animationName = $this.attr('data-animation');
-		if($animationName) {
-			$this.appear(function() {
-				$this.addClass('animated').addClass($animationName);
-			});
-		}
-	});
-
-	//Twitter
-	// $('.tweets-list-container', '#twitter').tweetscroll({ 
-	// 	username: 'spgrasso', 
-	// 	time: true, 
-	// 	limit: 11,
-	// 	replies: true, 
-	// 	position: 'append', 
-	// 	date_format: 'style2', 
-	// 	animation: 'slide_up', 
-	// 	visible_tweets: 1 
+	// $('*').each(function(){
+	// 	var $this = $(this);
+	// 	var $animationName = $this.attr('data-animation');
+	// 	if($animationName) {
+	// 		$this.appear(function() {
+	// 			$this.addClass('animated').addClass($animationName);
+	// 		});
+	// 	}
 	// });
 
-	//Animated Progress Bars
-	$('.skill li', '#skills').each(function () {
-		$(this).appear(function() {
-			var $this = $(this);
-			var b = $this.find('span').attr('data-width');
-			$this.animate({opacity:1,left:'0px'},1200);
-			$this.find('span').animate({
-				width: b + '%'
-			}, 1700, 'easeOutCirc');
-		});	
+	//Twitter
+	$('.tweets-list-container', '#twitter').tweetscroll({ 
+		username: 'spgrasso', 
+		time: true, 
+		limit: 11,
+		replies: true, 
+		position: 'append', 
+		date_format: 'style2', 
+		animation: 'slide_up', 
+		visible_tweets: 1 
 	});
+
+
+	$('.circlestat').appear(function(){
+		$(this).circliful();
+	});
+
+	//Animated Progress Bars
+	// $('.skill li', '#skills').each(function () {
+	// 	$(this).appear(function() {
+	// 		var $this = $(this);
+	// 		var b = $this.find('span').attr('data-width');
+	// 		$this.animate({opacity:1,left:'0px'},1200);
+	// 		$this.find('span').animate({
+	// 			width: b + '%'
+	// 		}, 1700, 'easeOutCirc');
+	// 	});	
+	// });
 
 	//Animated Counters
 	$('.count', '#status').each(function () {
@@ -71,6 +76,7 @@
 			});
 		});
 	});
+	
 $(window).load(function(){
 	//Responsive slide For blog
 	$('#blog-carousel').owlCarousel({

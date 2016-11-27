@@ -1704,3 +1704,38 @@ footer .info li {
 
 
 
+.circle-container {
+  display: block;
+  float: left;
+  margin-right: 55px;
+  margin-bottom: 45px;
+}
+
+.circle-container h3 {
+  display: block;
+  text-align: center;
+  font-size: 2.25em;
+  line-height: 1.4em;
+  color: #363636;
+  text-shadow: 1px 1px 0 #fff;
+}
+.circliful {
+    position: relative; 
+}
+
+.circle-text, .circle-info, .circle-text-half, .circle-info-half {
+    width: 100%;
+    position: absolute;
+    text-align: center;
+    display: inline-block;
+}
+
+.circle-info, .circle-info-half {
+    color: #999;
+}
+
+.circliful .fa {
+    margin: -10px 3px 0 3px;
+    position: relative;
+    bottom: 4px;
+}

@@ -5,13 +5,15 @@ var options = {
 	relativeTo: __dirname + '/server'
 };
 var port = process.env.PORT || 3500;
+let tweets = require('./server/models/tweets.js');
+
 manifest.connections.push({port: port});
 
 Glue.compose(manifest, options, function (err, server) {
 	
 	if (err) {
-        throw err;
-    }
+		throw err;
+	}
 
 	server.views({
 		engines: {
@@ -26,5 +28,6 @@ Glue.compose(manifest, options, function (err, server) {
 
 	server.start(function (err) {
 		console.log('Server running at:', port, 'as', process.env.NODE_ENV);
+		tweets(server);
 	});
 });
