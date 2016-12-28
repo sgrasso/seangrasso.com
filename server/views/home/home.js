@@ -1,21 +1,15 @@
-var fs = require('fs');
-var jade = require('jade');
-var Path = require('path');
+const fs = require('fs');
+const pug = require('pug');
+const twitter = require('./server/models/tweets.js');
 
-module.exports = function (request, reply) {
-	var navHtml = '';
-	var partial = './server/templates/partials/mainNav.jade';
-	var exists = fs.existsSync(partial);
+module.exports = (request, reply) => {
+	const partial = './server/templates/partials/mainNav.pug';
+	const tweets = twitter(server);
+	const navHtml = (fs.existsSync(partial)) ? pug.renderFile(partial, {}) : '';
 
-	if (exists){
-		navHtml = jade.renderFile(partial, {});
-	}
-
-	var context = {
+	reply.view('home', {
 		pageTitle: 'Home Page',
-		nav: navHtml
-	};
-	
-	reply.view('home', context);
-
+		nav: navHtml,
+		twitter: tweets
+	});
 };

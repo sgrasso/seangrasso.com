@@ -1,4 +1,4 @@
-exports.register = function (server, options, next) {
+exports.register = (server, options, next) => {
  
   server.route({
     path: '/',
@@ -7,7 +7,6 @@ exports.register = function (server, options, next) {
   });
  
   next();
- 
 };
  
 exports.register.attributes = {

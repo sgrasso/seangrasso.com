@@ -1,6 +1,11 @@
 'use strict';
 
-;(function($){
+$(document).ready(function() {
+
+  // Place JavaScript code here...
+
+
+// ;(function($){
 
 	$('.mask').delay(2000).fadeOut('slow');
 
@@ -77,7 +82,7 @@
 		});
 	});
 	
-$(window).load(function(){
+// $(window).load(function(){
 	//Responsive slide For blog
 	$('#blog-carousel').owlCarousel({
 		autoPlay: 3000,
@@ -137,6 +142,8 @@ $(window).load(function(){
 
 		return false;
 	});
-});
+// });
 
-})(jQuery);
+
+});
+// })(jQuery);

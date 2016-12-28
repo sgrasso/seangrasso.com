@@ -1,27 +1,17 @@
-var fs = require('fs');
-var jade = require('jade');
-var Path = require('path');
+const fs = require('fs');
+const pug = require('pug');
+const path = require('path');
 
-module.exports = function (request, reply) {
-	var view = '';
-	var nav = '';
-	var viewPartial = Path.join('./server/templates/partials', request.params.subview + '.jade');
-	var navPartial = './server/templates/partials/subNav.jade';
+module.exports = (request, reply) => {
+	const viewPartial = path.join('./server/templates/partials', request.params.subview + '.pug');
+	const navPartial = './server/templates/partials/subNav.pug';
 
-	if (fs.existsSync(viewPartial)){
-		view = jade.renderFile(viewPartial, {});
-	}
+	let view = (fs.existsSync(viewPartial)) ? pug.renderFile(viewPartial, {}) : '';
+	let nav = (fs.existsSync(navPartial)) ? pug.renderFile(navPartial, {}) : '';
 
-	if (fs.existsSync(navPartial)){
-		nav = jade.renderFile(navPartial, {});
-	}
-	
-	var context = {
+	reply.view('subview', {
 		pageTitle: request.params.subview + ' Page',
 		partial: view,
 		nav: nav
-	};
-	
-	reply.view('subview', context);
-
+	});
 };

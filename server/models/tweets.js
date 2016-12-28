@@ -1,6 +1,6 @@
 const Twitter = require('twitter');
 
-module.exports = (server) => {
+module.exports = server => {
 
 	const api = new Twitter(server.app.twitter);
 	const params = {screen_name: server.app.twitter_screenName};

@@ -10,7 +10,7 @@
     "build-js": "uglifyjs public/js/lib/*.js server/views/**/client.js -v -o public/js/main.min.js",
     "build-css": "cat public/css/font-awesome/css/font-awesome.css public/css/fontello/css/fontello.css public/css/lib/*.css public/css/styles.css | cleancss -o public/css/styles.min.css",
     "watch-server": "nodemon --ignore public/ --ignore 'server/views/**/client.js' -x npm start",
-    "watch-js": "nodemon -e js,jade -w public/js/lib -w 'server/views/**/client.js' -x 'npm run build-js'",
+    "watch-js": "nodemon -e js,pug -w public/js/lib -w 'server/views/**/client.js' -x 'npm run build-js'",
     "watch-css": "nodemon -e css -w public/css/styles.css -x 'npm run build-css'"
   },
   "author": "Sean Grasso",
@@ -25,7 +25,7 @@
     "good-squeeze": "3.x.x",
     "hapi": "^13.5.3",
     "inert": "3.x.x",
-    "jade": "1.x.x",
+    "pug": "^2.0.0-beta6",
     "rotating-file-stream": "1.x.x",
     "twitter": "^1.4.0",
     "vision": "^4.1.0"

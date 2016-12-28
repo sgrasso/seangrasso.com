@@ -1,33 +1,31 @@
-var Path = require('path');
-var Glue = require('glue');
-var manifest = require('./server/config/manifest.json');
-var options = {
+const path = require('path');
+const glue = require('glue');
+const manifest = require('./server/config/manifest.json');
+const options = {
 	relativeTo: __dirname + '/server'
 };
-var port = process.env.PORT || 3500;
-let tweets = require('./server/models/tweets.js');
+const port = process.env.PORT || 3500;
 
 manifest.connections.push({port: port});
 
-Glue.compose(manifest, options, function (err, server) {
+glue.compose(manifest, options, (err, server) => {
 	
-	if (err) {
+	if (err)
 		throw err;
-	}
 
 	server.views({
 		engines: {
-			jade: require('jade')
+			pug: require('pug')
 		},
 		isCached: false,
-		path: Path.join(__dirname, 'server/templates'),
+		path: path.join(__dirname, 'server/templates'),
 		compileOptions: {
 			pretty: true
 		}
 	});	
 
-	server.start(function (err) {
+	server.start(err => {
+		if (err) throw err;
 		console.log('Server running at:', port, 'as', process.env.NODE_ENV);
-		tweets(server);
 	});
 });
