@@ -1,3 +1,5 @@
+'use strict';
+
 const path = require('path');
 const glue = require('glue');
 const manifest = require('./server/config/manifest.json');

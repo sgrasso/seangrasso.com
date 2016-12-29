@@ -1,3 +1,5 @@
+'use strict';
+
 const Twitter = require('twitter');
 
 module.exports = server => {
