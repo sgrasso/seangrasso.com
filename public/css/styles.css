@@ -16,6 +16,89 @@ Author URI: http://themeforest.net/user/metrothemes/profile?ref=metrothemes
   font-weight: normal;
   font-style: normal;
 }
+.circle-container {
+  margin-right: 55px;
+  margin-bottom: 45px;
+}
+
+.circle-container h3 {
+  display: inline-block;
+  text-align: center;
+  font-size: 2.25em;
+  line-height: 1.4em;
+  color: #373432;
+  text-shadow: 1px 1px 0 #fff;
+}
+.circliful {
+    position: relative;
+    width:300px;
+}
+
+.circle-info, .circle-info-half {
+    color: #999;
+}
+
+.circliful .fa {
+    margin: -10px 3px 0 3px;
+    position: relative;
+    bottom: 4px;
+}
+
+div.jsSkills.circlestat.svg-container > svg { 
+    background:url(/public/img/logo_JavaScript_round.png);
+    background-position-x: 60px;
+    background-position-y: 60px;
+    background-repeat: no-repeat;
+}
+
+div.nodeSkills.circlestat.svg-container > svg { 
+    background:url(/public/img/nodejs_round_lightgreen.png);
+    background-position-x: 68px;
+    background-position-y: 67px;
+    background-repeat: no-repeat;
+}
+
+div.hapiSkills.circlestat.svg-container > svg { 
+    background:url(/public/img/hapi_round.png);
+    background-position-x: 60px;
+    background-position-y: 60px;
+    background-repeat: no-repeat;
+}
+
+div.mongoSkills.circlestat.svg-container > svg { 
+    background:url(/public/img/mongo_round.png);
+    background-position-x: 60px;
+    background-position-y: 60px;
+    background-repeat: no-repeat;
+}
+
+div.bootstrapSkills.circlestat.svg-container > svg { 
+    background:url(/public/img/bootstrap_round.png);
+    background-position-x: 60px;
+    background-position-y: 60px;
+    background-repeat: no-repeat;
+}
+
+div.reactSkills.circlestat.svg-container > svg { 
+    background:url(/public/img/react.png);
+    background-position-x: 102px;
+    background-position-y: 107px;
+    background-repeat: no-repeat;
+}
+
+div.nginxSkills.circlestat.svg-container > svg { 
+    background:url(/public/img/nginx_round.png);
+    background-position-x: 60px;
+    background-position-y: 60px;
+    background-repeat: no-repeat;
+}
+
+div.webpackSkills.circlestat.svg-container > svg { 
+    background:url(/public/img/webpack.png);
+    background-position-x: 95px;
+    background-position-y: 86px;
+    background-repeat: no-repeat;
+}
 
 /*BASIC STYLES
 ------------------------------------------------*/
@@ -167,6 +250,7 @@ a.mt-button {
     padding: 0;
     text-align: center;
     width: 32px;
+    text-decoration: none;
 }
 
 .social li a.facebook:before { content: '\e800'; }
@@ -453,7 +537,7 @@ a.mt-button {
 }
 .avater{
     width: 260px;
-    height: 260px;
+    height: 300px;
     border-radius: 50%;
     position: relative;
     cursor: default;
@@ -1702,40 +1786,3 @@ footer .info li {
 }
 
 
-
-
-.circle-container {
-  display: block;
-  float: left;
-  margin-right: 55px;
-  margin-bottom: 45px;
-}
-
-.circle-container h3 {
-  display: block;
-  text-align: center;
-  font-size: 2.25em;
-  line-height: 1.4em;
-  color: #363636;
-  text-shadow: 1px 1px 0 #fff;
-}
-.circliful {
-    position: relative; 
-}
-
-.circle-text, .circle-info, .circle-text-half, .circle-info-half {
-    width: 100%;
-    position: absolute;
-    text-align: center;
-    display: inline-block;
-}
-
-.circle-info, .circle-info-half {
-    color: #999;
-}
-
-.circliful .fa {
-    margin: -10px 3px 0 3px;
-    position: relative;
-    bottom: 4px;
-}
