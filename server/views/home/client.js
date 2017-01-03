@@ -2,12 +2,7 @@
 
 $(document).ready(function() {
 
-  // Place JavaScript code here...
-
-
-// ;(function($){
-
-	$('.mask').delay(2000).fadeOut('slow');
+	$('#mask').delay(1500).fadeOut('slow');
 
 	//Sticky Navigation
 	$('.main-nav', '#page-wrapper').sticky({ topSpacing: 0 });
@@ -25,7 +20,6 @@ $(document).ready(function() {
 	$('#wprocess').parallax('30%', 0.1);
 	$('#hire').parallax('30%', 0.1);
 	$('#twitter').parallax('30%', 0.1);
-	//$('#parallax-1').parallax('30%', 0.1);
 	/*add as necessary*/
 
 	// Appear Animations 
@@ -40,57 +34,27 @@ $(document).ready(function() {
 	// 	}
 	// });
 
-	//Twitter
-	$('.tweets-list-container', '#twitter').tweetscroll({ 
-		username: 'spgrasso', 
-		time: true, 
-		limit: 11,
-		replies: true, 
-		position: 'append', 
-		date_format: 'style2', 
-		animation: 'slide_up', 
-		visible_tweets: 1 
-	});
-
-
-	$('.circlestat').appear(function(){
+	$('.circlestat', '#skills').appear(function(){
 		$(this).circliful();
 	});
 
-	//Animated Progress Bars
-	// $('.skill li', '#skills').each(function () {
-	// 	$(this).appear(function() {
-	// 		var $this = $(this);
-	// 		var b = $this.find('span').attr('data-width');
-	// 		$this.animate({opacity:1,left:'0px'},1200);
-	// 		$this.find('span').animate({
-	// 			width: b + '%'
-	// 		}, 1700, 'easeOutCirc');
-	// 	});	
-	// });
-
-	//Animated Counters
-	$('.count', '#status').each(function () {
-		$('.total-numbers .sum', this).appear(function() {
-			var $this = $(this);
-			$this.countTo({
-				from: 0,
-				to: $this.html(),
-				speed: 3000,
-				refreshInterval: 60,
-			});
-		});
-	});
-	
-// $(window).load(function(){
-	//Responsive slide For blog
-	$('#blog-carousel').owlCarousel({
-		autoPlay: 3000,
+	$('.tweets-list-container', '#twitter').owlCarousel({
+		autoPlay: 6000,
 		navigation : false,
 		slideSpeed : 300,
-		paginationSpeed : 400,
-		singleItem:true
+		singleItem:true,
+		pagination:false,
+		stopOnHover:true
 	});
+
+	//Responsive slide For blog
+	// $('#blog-carousel').owlCarousel({
+	// 	autoPlay: 3000,
+	// 	navigation : false,
+	// 	slideSpeed : 300,
+	// 	paginationSpeed : 400,
+	// 	singleItem:true
+	// });
 
 	//Masonry Blog
 	$('.blog-post-holder', '#blog').isotope({
@@ -103,7 +67,7 @@ $(document).ready(function() {
 		}
 	});
 
-	//Portfolio Isotop
+	//Portfolio Isotope
 	var $container = $('.portfolio-container', '#portfolio'),
 		$optionSets = $('#options .option-set'),
 		$optionLinks = $optionSets.find('a');
@@ -142,8 +106,5 @@ $(document).ready(function() {
 
 		return false;
 	});
-// });
-
 
 });
-// })(jQuery);

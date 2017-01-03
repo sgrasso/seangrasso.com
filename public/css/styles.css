@@ -44,6 +44,10 @@ Author URI: http://themeforest.net/user/metrothemes/profile?ref=metrothemes
     bottom: 4px;
 }
 
+.tweet-content {
+    font-size: 18px;
+}
+
 div.jsSkills.circlestat.svg-container > svg { 
     background:url(/public/img/logo_JavaScript_round.png);
     background-position-x: 60px;
@@ -1642,7 +1646,7 @@ footer .info li {
 }
 /*Preloader
 -----------------------------------*/
-.mask {
+#mask {
     background-color:#FFF;
     width:100%;
     height:100%;

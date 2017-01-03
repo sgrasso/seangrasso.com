@@ -3,11 +3,11 @@
 		.container
 			//- twitter feed
 			//- Title
-			.title 
-				#{tweet}
+			.title
 				i.icon-twitter
 			//- Title
-			article#tweet-sroll-wrapper.clearfix
+			article#tweet-scroll-wrapper.clearfix
 				.tweets-list-container
-					#{tweet_content}
+					each tweet in tweets
+						.tweet-content !{tweet}
 			//- twitter feed end
