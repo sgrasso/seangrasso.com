@@ -2,6 +2,8 @@
 
 const path = require('path');
 const glue = require('glue');
+
+const twitterApi = require('./server/models/tweets.js');
 const manifest = require('./server/config/manifest.json');
 const options = {
 	relativeTo: __dirname + '/server'
@@ -12,8 +14,7 @@ manifest.connections.push({port: port});
 
 glue.compose(manifest, options, (err, server) => {
 	
-	if (err)
-		throw err;
+	if (err) throw err;
 
 	server.views({
 		engines: {
@@ -25,6 +26,18 @@ glue.compose(manifest, options, (err, server) => {
 			pretty: true
 		}
 	});	
+
+	server.method('getTweets', twitterApi, {
+		cache: {
+			expiresIn: 86399999,
+			staleIn: 21599999,
+			staleTimeout: 100,
+			generateTimeout: 120000
+		},
+		generateKey: (screen_name, credentials) => {
+			return screen_name;
+		}
+	});
 
 	server.start(err => {
 		if (err) throw err;

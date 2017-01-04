@@ -3,10 +3,10 @@
 const Twitter = require('twitter');
 const tweetToHTML = require('tweet-to-html');
 
-module.exports = (server, done) => {
+module.exports = (screen_name, credentials, done) => {
 
-	const api = new Twitter(server.settings.app.twitter);
-	const params = {screen_name: server.settings.app.twitter_screenName};
+	const api = new Twitter(credentials);
+	const params = {screen_name: screen_name};
 
 	api.get('statuses/user_timeline', params, (e, tweets, resp) => {
 		if (e) return done(e, null);
