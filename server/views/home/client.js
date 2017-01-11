@@ -22,18 +22,6 @@ $(document).ready(function() {
 	$('#twitter').parallax('30%', 0.1);
 	/*add as necessary*/
 
-	// Appear Animations 
-	// TODO: proper selector.
-	// $('*').each(function(){
-	// 	var $this = $(this);
-	// 	var $animationName = $this.attr('data-animation');
-	// 	if($animationName) {
-	// 		$this.appear(function() {
-	// 			$this.addClass('animated').addClass($animationName);
-	// 		});
-	// 	}
-	// });
-
 	$('.circlestat', '#skills').appear(function(){
 		$(this).circliful();
 	});
@@ -47,14 +35,13 @@ $(document).ready(function() {
 		stopOnHover:true
 	});
 
-	//Responsive slide For blog
-	// $('#blog-carousel').owlCarousel({
-	// 	autoPlay: 3000,
-	// 	navigation : false,
-	// 	slideSpeed : 300,
-	// 	paginationSpeed : 400,
-	// 	singleItem:true
-	// });
+	//onepage nav
+	$('#navs,.nav').onePageNav({
+		currentClass: 'active',
+		filter: ':not(.external)',
+		scrollThreshold: 0.25,
+		scrollOffset: 0
+	});
 
 	//Masonry Blog
 	$('.blog-post-holder', '#blog').isotope({
@@ -71,12 +58,14 @@ $(document).ready(function() {
 	var $container = $('.portfolio-container', '#portfolio'),
 		$optionSets = $('#options .option-set'),
 		$optionLinks = $optionSets.find('a');
-	
-	$container.isotope({
-		itemSelector : '.portfolio-item',
-		percentPosition: true,
-		masonry: {columnWidth: 0, fitWidth: true}
-	});
+
+	setTimeout(function(){
+		$container.isotope({
+			itemSelector : '.portfolio-item',
+			percentPosition: true,
+			masonry: {columnWidth: 0, fitWidth: true}
+		});
+	}, 1);
 	
 	$optionLinks.click(function(){
 		var options = {}, $optionSet = '', $this = $(this), key = '', value = '';
