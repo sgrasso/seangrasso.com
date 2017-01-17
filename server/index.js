@@ -3,10 +3,10 @@
 const path = require('path');
 const glue = require('glue');
 
-const twitterApi = require('./server/models/tweets.js');
-const manifest = require('./server/config/manifest.json');
+const twitterApi = require('./models/tweets.js');
+const manifest = require('./config/manifest.json');
 const options = {
-	relativeTo: __dirname + '/server'
+	relativeTo: __dirname + '/'
 };
 const port = process.env.PORT || 3500;
 
@@ -21,7 +21,7 @@ glue.compose(manifest, options, (err, server) => {
 			pug: require('pug')
 		},
 		isCached: false,
-		path: path.join(__dirname, 'server/templates'),
+		path: path.join(__dirname, 'templates'),
 		compileOptions: {
 			pretty: true
 		}

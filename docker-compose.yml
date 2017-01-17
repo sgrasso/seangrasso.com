@@ -1,0 +1,19 @@
+web:
+  build: ./server/
+  volumes:
+    - "./app:/app"
+  ports:
+    - "3500:3500"
+  command: node .
+
+nginx:
+  restart: always
+  build: ./nginx/
+  ports:
+    - "80:80"
+  volumes:
+    - ./server/public
+  volumes_from:
+    - web
+  links:
+    - web:web
