@@ -12,7 +12,5 @@ ENV PORT=3500
 # Expose the port
 EXPOSE 3500
 
-WORKDIR /app/server
-
 # Run the app
 CMD ["npm", "start"]
