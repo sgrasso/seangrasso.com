@@ -1,9 +1,7 @@
 FROM gcr.io/google_appengine/nodejs
 
 # Copy application code.
-COPY ./server /app/
-
-WORKDIR /app/server
+COPY . /app/
 
 # Install dependencies.
 RUN npm --unsafe-perm install
@@ -14,5 +12,7 @@ ENV PORT=3500
 # Expose the port
 EXPOSE 3500
 
-# run the app
-ENTRYPOINT ["npm", "start"]
+WORKDIR /app/server
+
+# Run the app
+CMD ["npm", "start"]
