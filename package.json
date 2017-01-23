@@ -13,6 +13,7 @@
     "watch-js": "nodemon -e js,pug -w public/js/lib -w 'server/views/**/client.js' -x 'npm run build-js'",
     "watch-css": "nodemon -e css -w public/css/styles.css -x 'npm run build-css'"
   },
+  "private": true,
   "author": "Sean Grasso",
   "license": "MIT",
   "engines": {

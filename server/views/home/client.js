@@ -3,7 +3,6 @@
 $(document).ready(function() {
 
 	$('#mask').delay(1500).fadeOut('slow');
-
 	//Sticky Navigation
 	$('.main-nav', '#page-wrapper').sticky({ topSpacing: 0 });
 

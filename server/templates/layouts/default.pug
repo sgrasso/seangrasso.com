@@ -23,8 +23,8 @@ html
 		//- link(rel='apple-touch-icon', sizes='114x114', href='img/icons/apple-touch-icon-114x114.png')
 		//if lt IE 9
 			script(src='http://html5shim.googlecode.com/svn/trunk/html5.js')
-		link(rel='stylesheet', media='screen', href='/public/css/styles.min.css')
-		link(rel='stylesheet', media='screen', href='/public/css/color-orange.css')
+		link(rel='stylesheet', media='screen', href= assetdomain + '/css/styles.min.css')
+		link(rel='stylesheet', media='screen', href= assetdomain + '/css/color-orange.css')
 		link(rel='stylesheet', type='text/css', href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Montserrat:400,700')
 		link(href='http://fonts.googleapis.com/css?family=Pacifico', rel='stylesheet', type='text/css')
 
@@ -44,11 +44,11 @@ html
 				span#bubblingG_3
 
 		div#page-wrapper
-			section#home.parallax(style="background-image: url('/public/img/Cleveland_skyline_from_the_Flats_modified.jpg');", data-stellar-background-ratio='0.6', data-stellar-vertical-offset='20')
+			section#home.parallax(style="background-image: url('" + assetdomain + "/img/Cleveland_skyline_from_the_Flats_modified.jpg');", data-stellar-background-ratio='0.6', data-stellar-vertical-offset='20')
 				.parallax-overlay
 					.container
 						.col-md-12
-							.avater(style="background-image: url('/public/img/SeanGrasso.jpg');background-size: cover;")
+							.avater(style="background-image: url('" + assetdomain + "/img/SeanGrasso.jpg');background-size: cover;")
 							.info
 								h1 Sean Grasso
 								h2 Full Stack Javascript Developer
@@ -66,7 +66,6 @@ html
 				.container
 					.copyright ©2016 Sean Grasso All rights reserved.
 
-		script(src='http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.js')
-		script(src='/public/js/lib/jquery.circliful.min.js')
-		script(src='/public/js/main.min.js')
+		script(src= 'http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.js')
+		script(src= assetdomain + '/js/main.min.js')
 		block js

@@ -8,7 +8,7 @@ const manifest = require('./config/manifest.json');
 const options = {
 	relativeTo: __dirname + '/'
 };
-const port = process.env.PORT || 3500;
+const port = process.env.OPENSHIFT_NODEJS_PORT || 3500;
 
 manifest.connections.push({port: port});
 
@@ -24,8 +24,19 @@ glue.compose(manifest, options, (err, server) => {
 		path: path.join(__dirname, 'templates'),
 		compileOptions: {
 			pretty: true
+		},
+		context: {
+			assetdomain: (process.NPM_CONFIG_PRODUCTION === 'production') ? 'http://assets.seangrasso.com' : '/public'
 		}
 	});	
+
+	server.route({
+		path: '/health',
+		method: 'GET',
+		handler: (request, reply) => {
+			reply('').code(200);
+		}
+	});
 
 	server.method('getTweets', twitterApi, {
 		cache: {

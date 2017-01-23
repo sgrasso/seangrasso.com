@@ -4,7 +4,8 @@ const fs = require('fs');
 const pug = require('pug');
 
 module.exports = (request, reply) => {
-	const partial = './templates/partials/mainNav.pug';
+	const partial = './server/templates/partials/mainNav.pug';
+	console.log(partial)
 	const navHtml = (fs.existsSync(partial)) ? pug.renderFile(partial, {}) : '';
 
 	request.server.methods.getTweets(
