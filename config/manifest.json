@@ -1,0 +1,86 @@
+{
+	"server": {
+		"app": {
+			"twitter_screenName": "spgrasso",
+			"twitter": {
+				"consumer_key": "js3wu1ugD7YcqKdkeHa555TPD",
+				"consumer_secret": "biB6HvFT6DoF5xVWmthjPvZpNwst64li3zSeU0Xsc85wTyUuIC",
+				"access_token_key": "334411907-ttJuLg5qd3H784TPTmUHEA9CijqhsSWZPvconNnZ",
+				"access_token_secret": "tCZbJdvB8LxbkMPEfHpo4h6kBqJdk47nP9Jx7vT7kl4nJ"
+			}
+		},
+		"connections": {
+			"router": {
+				"stripTrailingSlash": true
+			}
+		}
+	},
+	"connections": [],
+	"registrations": [
+		{
+			"plugin": {
+				"register": "./views/home",
+				"options": {}
+			}
+		},
+		{
+			"plugin": {
+				"register": "./views/subview",
+				"options": {}
+			}
+		},
+		{
+			"plugin": {
+				"register": "inert",
+				"options": {}
+			}
+		},
+		{
+			"plugin": {
+				"register": "vision",
+				"options": {}
+			}
+		},
+		{
+			"plugin": {
+				"register": "good",
+				"options": {
+					"ops": {
+						"interval": 5000
+					},
+					"reporters": {
+						"console": [{
+							"module": "good-squeeze",
+							"name": "Squeeze",
+							"args": [{ "log": "*", "response": "*"}]
+						}, {
+							"module": "good-console"
+						}, "stdout"],
+						"file": [{
+							"module": "good-squeeze",
+							"name": "Squeeze",
+							"args": [{ "ops": "*" }]
+						}, {
+							"module": "good-squeeze",
+							"name": "SafeJson",
+							"args": [
+								null,
+								{ "separator": "," }
+							]
+						}, {
+							"module": "rotating-file-stream",
+							"args": [
+								"ops_log",
+								{
+									"size": "5M",
+									"interval": "5d",
+									"path": "./logs"
+								}
+							]
+						}]
+					}
+				}
+			}
+		}
+	]
+}

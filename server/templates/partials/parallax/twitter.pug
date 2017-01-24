@@ -1,0 +1,13 @@
+#twitter.parallax(style="background-image: url('/public/img/code2_1348x900.jpg');", data-stellar-background-ratio='0.6', data-stellar-vertical-offset='20')
+	.parallax-overlay-2
+		.container
+			//- twitter feed
+			//- Title
+			.title
+				i.icon-twitter
+			//- Title
+			article#tweet-scroll-wrapper.clearfix
+				.tweets-list-container
+					each tweet in tweets
+						.tweet-content !{tweet}
+			//- twitter feed end
