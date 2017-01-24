@@ -9,8 +9,7 @@ const manifest = require('../config/manifest.json');
 const options = {
 	relativeTo: __dirname + '/'
 };
-// const port = process.env.PORT || 3500;
-const port = '/tmp/nginx.socket';
+const port = (process.env.NODE_ENV === 'production') ? '/tmp/nginx.socket' : 3500;
 
 manifest.connections.push({port: port});
 
@@ -22,7 +21,7 @@ glue.compose(manifest, options, (err, server) => {
 		engines: {
 			pug: require('pug')
 		},
-		isCached: false,
+		isCached: true,
 		path: path.join(__dirname, 'templates'),
 		compileOptions: {
 			pretty: true
@@ -30,7 +29,7 @@ glue.compose(manifest, options, (err, server) => {
 		context: {
 			assetdomain: '/public'
 		}
-	});	
+	});
 
 	server.method('getTweets', twitterApi, {
 		cache: {
@@ -47,7 +46,7 @@ glue.compose(manifest, options, (err, server) => {
 	server.start(err => {
 		if (err) throw err;
 		if (process.env.DYNO) {
-		 	console.log('This is on Heroku..!!');
+		 	console.log('Heroku Deploy..!!');
 			fs.openSync('/tmp/app-initialized', 'w');
 		}
 		console.log('Server running at:', port, 'as', process.env.NODE_ENV);

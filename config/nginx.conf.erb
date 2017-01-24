@@ -45,21 +45,17 @@ http {
         }
 
         location ~* \.(gif|jpg|png|ico|woff|tff)$ {
+            root /app/public;
             add_header Access-Control-Allow-Origin *;
             add_header Cache-Control "max-age=31536000, public";
             access_log off;
         }
 
         location ~* \.(css|js)$ {
+            root /app/public;
             add_header Access-Control-Allow-Origin *;
             add_header Cache-Control "max-age=2628000, public";
             access_log off;
-        }
-
-        location ^~ /public/ {
-            charset utf-8;
-            root /app/public;
-            rewrite ^/public/(.*)$ /$1 break;
         }
 
         # Turn off logging for them
