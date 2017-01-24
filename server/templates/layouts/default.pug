@@ -22,8 +22,8 @@ html
 			script(src='http://html5shim.googlecode.com/svn/trunk/html5.js')
 		link(rel='stylesheet', media='screen', href= '/public/css/styles.min.css')
 		link(rel='stylesheet', media='screen', href= '/public/css/color-orange.css')
-		link(rel='stylesheet', type='text/css', href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Montserrat:400,700')
-		link(href='http://fonts.googleapis.com/css?family=Pacifico', rel='stylesheet', type='text/css')
+		link(rel='stylesheet', type='text/css', href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Montserrat:400,700' media="none" onload="if(media!='all')media='all'")
+		link(href='http://fonts.googleapis.com/css?family=Pacifico', rel='stylesheet', type='text/css' media="none" onload="if(media!='all')media='all'")
 
 		block css
 
@@ -63,6 +63,6 @@ html
 					.copyright ©#{new Date().getFullYear()} Sean Grasso All rights reserved.
 
 		script(src='http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
-		script(async src='/public/js/main.min.js')
+		script(src='/public/js/main.min.js')
 		
 		block js
