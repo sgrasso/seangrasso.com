@@ -10,8 +10,6 @@ http {
 		server unix:/tmp/nginx.socket fail_timeout=0;
 	}
 
-	add_header X-Frame-Options SAMEORIGIN;
-
 	map $sent_http_content_type $expires {
 		default                     epoch;
 		application/javascript      "max-age=2628000, public";
@@ -41,7 +39,6 @@ http {
 	gzip on;
 	gzip_disable "msie6";
 	gzip_min_length 1000;
-	gzip_vary on;
 	gzip_proxied any;
 	gzip_comp_level 6;
 	gzip_buffers 16 8k;
@@ -61,9 +58,9 @@ http {
 	server {
 		listen <%= ENV["PORT"] %> default_server;
 		client_max_body_size 30M;
+		add_header X-Frame-Options SAMEORIGIN;
 
 		root /app/;
-
 		server_name _;
 
 		location / {
