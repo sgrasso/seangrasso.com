@@ -2,57 +2,89 @@ daemon off;
 worker_processes <%= ENV['NGINX_WORKERS'] || 4 %>;
 
 events {
-    worker_connections 1024;
+	worker_connections 1024;
 }
 
 http {
-    upstream my_nginx {
-        server unix:/tmp/nginx.socket fail_timeout=0;
-    }
+	upstream my_nginx {
+		server unix:/tmp/nginx.socket fail_timeout=0;
+	}
 
-    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
-                    '$status $body_bytes_sent "$http_referer" '
-                    '"$http_user_agent" "$http_x_forwarded_for"';
+	add_header X-Frame-Options SAMEORIGIN;
 
-    sendfile on;
-    tcp_nopush on;
-    tcp_nodelay on;
-    keepalive_timeout 300;
-    send_timeout 10;
+	map $sent_http_content_type $expires {
+		default                     epoch;
+		application/javascript      "max-age=2628000, public";
+		application/x-javascript    "max-age=2628000, public";
+		text/css                    "max-age=2628000, public";
+		application/octet-stream    "max-age=31536000, public";
+		~font/                      "max-age=31536000, public";
+		~image/                     "max-age=31536000, public";
+	}
 
-    include mime.types;
-    default_type application/octet-stream;
+	log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+					'$status $body_bytes_sent "$http_referer" '
+					'"$http_user_agent" "$http_x_forwarded_for"';
 
-    access_log logs/nginx/access.log;
-    error_log logs/nginx/error.log;
+	sendfile on;
+	tcp_nopush on;
+	tcp_nodelay on;
+	keepalive_timeout 300;
+	send_timeout 10;
 
-    gzip on;
-    gzip_min_length 1000;
+	include mime.types;
+	default_type application/octet-stream;
 
-    server {
-        listen <%= ENV["PORT"] %> default_server;
-        client_max_body_size 30M;
+	access_log logs/nginx/access.log;
+	error_log logs/nginx/error.log;
 
-        # server_name localhost;
+	gzip on;
+	gzip_disable "msie6";
+	gzip_min_length 1000;
+	gzip_vary on;
+	gzip_proxied any;
+	gzip_comp_level 6;
+	gzip_buffers 16 8k;
+	gzip_http_version 1.1;
 
-        location / {
-            expires epoch;
-            proxy_pass http://my_nginx;
-            proxy_set_header Host $host;
-            proxy_set_header X-Real-IP $remote_addr;
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_set_header X-Forwarded-Proto $scheme;
-        }
+	gzip_types  application/ecmascript;
+	gzip_types  application/javascript;
+	gzip_types  application/json;
+	gzip_types  application/xml;
+	gzip_types  application/x-javascript;
+	gzip_types  image/svg+xml;
+	gzip_types  text/css;
+	gzip_types  text/javascript;
+	gzip_types  text/plain;
+	gzip_types  text/xml;
 
-        location ^~ /public/ {
-            root /app;
-            add_header Access-Control-Allow-Origin *;
-            add_header Cache-Control "max-age=2628000, public";
-            access_log off;
-        }
+	server {
+		listen <%= ENV["PORT"] %> default_server;
+		client_max_body_size 30M;
 
-        # Turn off logging for them
-        location = /favicon.ico { log_not_found off; access_log off; }
-        location = /robots.txt  { log_not_found off; access_log off; }
-    }
+		root /app/;
+
+		server_name _;
+
+		location / {
+			expires $expires;
+			proxy_pass http://my_nginx;
+			proxy_set_header Host $host;
+			proxy_set_header X-Real-IP $remote_addr;
+			proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+			proxy_set_header X-Forwarded-Proto $scheme;
+		}
+
+		location ^~ /public/ {
+			add_header Access-Control-Allow-Origin *;
+			add_header Pragma public;
+			add_header Cache-Control $expires;
+			add_header Vary Accept-Encoding;
+			access_log off;
+		}
+
+		# Turn off logging for them
+		location = /favicon.ico { log_not_found off; access_log off; }
+		location = /robots.txt  { log_not_found off; access_log off; }
+	}
 }
