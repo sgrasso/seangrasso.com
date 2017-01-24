@@ -58,10 +58,10 @@ http {
 	server {
 		listen <%= ENV["PORT"] %> default_server;
 		client_max_body_size 30M;
-		# server_name _;
+		server_name _;
 		
 		add_header X-Frame-Options SAMEORIGIN;
-		add_header X-XSS-Protection:1; mode=block;
+		add_header X-XSS-Protection "1; mode=block";
 
 		root /app/;
 
