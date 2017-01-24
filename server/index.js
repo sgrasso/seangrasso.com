@@ -1,14 +1,16 @@
 'use strict';
 
+const fs = require('fs');
 const path = require('path');
 const glue = require('glue');
 
 const twitterApi = require('./models/tweets.js');
-const manifest = require('./config/manifest.json');
+const manifest = require('../config/manifest.json');
 const options = {
 	relativeTo: __dirname + '/'
 };
-const port = process.env.OPENSHIFT_NODEJS_PORT || 3500;
+// const port = process.env.PORT || 3500;
+const port = '/tmp/nginx.socket';
 
 manifest.connections.push({port: port});
 
@@ -26,17 +28,9 @@ glue.compose(manifest, options, (err, server) => {
 			pretty: true
 		},
 		context: {
-			assetdomain: (process.NPM_CONFIG_PRODUCTION === 'production') ? 'http://assets.seangrasso.com' : '/public'
+			assetdomain: '/public'
 		}
 	});	
-
-	server.route({
-		path: '/health',
-		method: 'GET',
-		handler: (request, reply) => {
-			reply('').code(200);
-		}
-	});
 
 	server.method('getTweets', twitterApi, {
 		cache: {
@@ -52,6 +46,10 @@ glue.compose(manifest, options, (err, server) => {
 
 	server.start(err => {
 		if (err) throw err;
+		if (process.env.DYNO) {
+		 	console.log('This is on Heroku..!!');
+			fs.openSync('/tmp/app-initialized', 'w');
+		}
 		console.log('Server running at:', port, 'as', process.env.NODE_ENV);
 	});
 });
