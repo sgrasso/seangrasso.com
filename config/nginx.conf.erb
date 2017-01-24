@@ -58,7 +58,7 @@ http {
 
         location ^~ /public/ {
             charset utf-8;
-            root /data/seangrasso.com/public;
+            root /app/public;
             rewrite ^/public/(.*)$ /$1 break;
         }
 
