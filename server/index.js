@@ -21,13 +21,10 @@ glue.compose(manifest, options, (err, server) => {
 		engines: {
 			pug: require('pug')
 		},
-		isCached: true,
+		isCached: (process.env.NODE_ENV === 'production'),
 		path: path.join(__dirname, 'templates'),
 		compileOptions: {
 			pretty: true
-		},
-		context: {
-			assetdomain: '/public'
 		}
 	});
 
