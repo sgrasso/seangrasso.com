@@ -38,9 +38,9 @@ http {
 
 	gzip on;
 	gzip_disable "msie6";
-	gzip_min_length 1000;
+	gzip_min_length 256;
 	gzip_proxied any;
-	gzip_comp_level 6;
+	gzip_comp_level 5;
 	gzip_buffers 16 8k;
 	gzip_http_version 1.1;
 
