@@ -6,7 +6,7 @@ events {
 
 http {
     upstream my_nginx {
-        server /tmp/nginx.socket;
+        server unix:/tmp/nginx.socket fail_timeout=0;
     }
 
     log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
@@ -30,8 +30,8 @@ http {
     gzip_min_length 1000;
 
     server {
-        listen 80 default_server;
-        listen [::]:80 default_server;
+        listen <%= ENV["PORT"] %> default_server;
+        listen [::]:<%= ENV["PORT"] %> default_server;
         client_max_body_size 30M;
 
         # server_name localhost;
