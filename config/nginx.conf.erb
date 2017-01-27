@@ -82,6 +82,10 @@ http {
 	        access_log off;
 		}
 
+        location ~ ^/(sitemap.xml) {
+            root /app/public;
+        }
+
 		# Turn off logging for them
 		location = /favicon.ico { log_not_found off; access_log off; }
 		location = /robots.txt  { log_not_found off; access_log off; }

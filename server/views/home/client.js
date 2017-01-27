@@ -41,7 +41,13 @@ $(document).ready(function() {
 		scrollThreshold: 0.25,
 		scrollOffset: 0
 	});
+	
+	var navActive = window.location.pathname;
+	if (navActive !== '/'){
+		$('a[href*="' + navActive + '"]', '.nav').addClass('active');
+	}
 
+	console.log(navActive)
 	//Masonry Blog
 	$('.blog-post-holder', '#blog').isotope({
 		percentPosition: true,
