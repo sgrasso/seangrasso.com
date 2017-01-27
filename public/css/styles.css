@@ -424,6 +424,7 @@ a.mt-button {
     line-height: 38px;
 }
 .navbar-nav > li > a.active {
+    color: #FFFFFF;
     background-color: #F4A622;
 }
 .navbar-default .navbar-nav > li > a:hover,
