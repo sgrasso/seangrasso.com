@@ -83,25 +83,11 @@ div.bootstrapSkills.circlestat.svg-container > svg {
     background-repeat: no-repeat;
 }
 
-div.vueSkills.circlestat.svg-container>svg {
-	background: url(/public/img/Vuejs_Logo.png);
-	background-position-x: 60px;
-	background-position-y: 60px;
-	background-repeat: no-repeat;
-}
-
 div.reactSkills.circlestat.svg-container > svg { 
     background:url(/public/img/react.png);
     background-position-x: 102px;
     background-position-y: 107px;
     background-repeat: no-repeat;
-}
-
-div.dockerSkills.circlestat.svg-container>svg {
-	background: url(/public/img/docker_logo.png);
-	background-position-x: 60px;
-	background-position-y: 60px;
-	background-repeat: no-repeat;
 }
 
 div.nginxSkills.circlestat.svg-container > svg { 
