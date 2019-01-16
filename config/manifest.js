@@ -33,34 +33,32 @@ module.exports = {
 			"plugin": "./views/subview"
 		},
 		{
-			"plugin": {
-				"register": "good",
-				"options": {
-					"reporters": {
-						"request": [{
-							"module": "good-squeeze",
-							"name": "Squeeze",
-							"args": [{
-								"request": ["error"],
-								"log": ["error"],
-								"error": "*"
-							}]
-						}, {
-							"module": "good-file",
-							"args": ["/logs/seangrasso_error.log"]
-						}],
-						"server": [{
-							"module": "good-squeeze",
-							"name": "Squeeze",
-							"args": [{
-								"request": ["debug", "info"],
-								"log": ["debug", "info"]
-							}]
-						}, {
-							"module": "good-file",
-							"args": ["/logs/seangrasso_debug.log"]
+			"plugin": "good",
+			"options": {
+				"reporters": {
+					"request": [{
+						"module": "good-squeeze",
+						"name": "Squeeze",
+						"args": [{
+							"request": ["error"],
+							"log": ["error"],
+							"error": "*"
 						}]
-					}
+					}, {
+						"module": "good-file",
+						"args": ["/logs/seangrasso_error.log"]
+					}],
+					"server": [{
+						"module": "good-squeeze",
+						"name": "Squeeze",
+						"args": [{
+							"request": ["debug", "info"],
+							"log": ["debug", "info"]
+						}]
+					}, {
+						"module": "good-file",
+						"args": ["/logs/seangrasso_debug.log"]
+					}]
 				}
 			}
 		}
