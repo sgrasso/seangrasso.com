@@ -5,7 +5,7 @@ const fs = require('fs');
 const Glue = require('glue');
 
 const twitterApi = require('./models/tweets.js');
-const manifest = require('../config/manifest.json');
+const manifest = require('../config/manifest.js');
 const options = {
 	relativeTo: __dirname + '/'
 };
