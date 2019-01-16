@@ -9,9 +9,6 @@ const manifest = require('../config/manifest.js');
 const options = {
 	relativeTo: __dirname + '/'
 };
-const port = (process.env.NODE_ENV === 'production') ? '/tmp/nginx.socket' : 3500;
-
-manifest.server.port = 3500;
 
 const startServer = async function () {
 	try {

@@ -1,6 +1,6 @@
 module.exports = {
 	"server": {
-		"port": 3500,
+		"port": (process.env.NODE_ENV === 'production') ? '/tmp/nginx.socket' : 3500,
 		"app": {
 			"twitter_screenName": "spgrasso",
 			"twitter": {
@@ -46,7 +46,7 @@ module.exports = {
 						}]
 					}, {
 						"module": "good-file",
-						"args": ["/logs/seangrasso_error.log"]
+						"args": ["logs/error.log"]
 					}],
 					"server": [{
 						"module": "good-squeeze",
@@ -57,7 +57,7 @@ module.exports = {
 						}]
 					}, {
 						"module": "good-file",
-						"args": ["/logs/seangrasso_debug.log"]
+						"args": ["logs/debug.log"]
 					}]
 				}
 			}
