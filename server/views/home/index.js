@@ -1,19 +1,14 @@
 'use strict';
 
-exports.register = (server, options, next) => {
- 
-  server.route({
-    path: '/',
-    method: 'GET',
-    handler: require('./home')
-  });
- 
-  next();
+exports.register = (server, options) => {
+
+	server.route({
+		path: '/',
+		method: 'GET',
+		handler: require('./home')
+	});
+
 };
- 
-exports.register.attributes = {
-  pkg: {
-  	name: "Home page",
-  	version: "1.0"
-  }
-};
+
+exports.name = "Home Page";
+exports.version = "1.0";

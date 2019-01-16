@@ -1,5 +1,6 @@
 {
 	"server": {
+		"port": 3500,
 		"app": {
 			"twitter_screenName": "spgrasso",
 			"twitter": {
@@ -9,78 +10,27 @@
 				"access_token_secret": "tCZbJdvB8LxbkMPEfHpo4h6kBqJdk47nP9Jx7vT7kl4nJ"
 			}
 		},
-		"connections": {
-			"router": {
-				"stripTrailingSlash": true
-			}
+		"router": {
+			"stripTrailingSlash": true
+		},
+		"debug": {
+			"request": ["error", "debug", "info"],
+			"log": ["error", "debug", "info"]
 		}
 	},
-	"connections": [],
-	"registrations": [
+	"register": {
+		"plugins": [
 		{
-			"plugin": {
-				"register": "./views/home",
-				"options": {}
-			}
+			"plugin": "inert"
 		},
 		{
-			"plugin": {
-				"register": "./views/subview",
-				"options": {}
-			}
+			"plugin": "vision"
 		},
 		{
-			"plugin": {
-				"register": "inert",
-				"options": {}
-			}
+			"plugin": "./views/home"
 		},
 		{
-			"plugin": {
-				"register": "vision",
-				"options": {}
-			}
-		},
-		{
-			"plugin": {
-				"register": "good",
-				"options": {
-					"ops": {
-						"interval": 5000
-					},
-					"reporters": {
-						"console": [{
-							"module": "good-squeeze",
-							"name": "Squeeze",
-							"args": [{ "log": "*", "response": "*"}]
-						}, {
-							"module": "good-console"
-						}, "stdout"],
-						"file": [{
-							"module": "good-squeeze",
-							"name": "Squeeze",
-							"args": [{ "ops": "*" }]
-						}, {
-							"module": "good-squeeze",
-							"name": "SafeJson",
-							"args": [
-								null,
-								{ "separator": "," }
-							]
-						}, {
-							"module": "rotating-file-stream",
-							"args": [
-								"ops_log",
-								{
-									"size": "5M",
-									"interval": "5d",
-									"path": "./logs"
-								}
-							]
-						}]
-					}
-				}
-			}
+			"plugin": "./views/subview"
 		}
-	]
+	]}
 }

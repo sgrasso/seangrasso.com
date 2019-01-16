@@ -84,7 +84,7 @@ div.bootstrapSkills.circlestat.svg-container > svg {
 }
 
 div.vueSkills.circlestat.svg-container>svg {
-	background: url(/public/img/Vuejs_Logo.png);
+	background: url(/public/img/VueJs_Logo.png);
 	background-position-x: 60px;
 	background-position-y: 60px;
 	background-repeat: no-repeat;

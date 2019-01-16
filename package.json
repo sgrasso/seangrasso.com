@@ -17,24 +17,23 @@
   "author": "Sean Grasso",
   "license": "MIT",
   "engines": {
-    "node": ">=4.0"
+    "node": ">=8.0"
   },
   "dependencies": {
-    "glue": "3.x.x",
-    "good": "7.x.x",
-    "good-console": "6.x.x",
-    "good-squeeze": "3.x.x",
-    "hapi": "13.5.3",
-    "inert": "3.x.x",
-    "pug": "2.0.0-beta6",
+    "glue": "5.x.x",
+    "good": "8.x.x",
+    "good-squeeze": "5.x.x",
+    "hapi": "17.x.x",
+    "inert": "5.x.x",
+    "pug": "2.x.x",
     "rotating-file-stream": "1.x.x",
-    "tweet-to-html": "1.0.2",
-    "twitter": "^1.7.1",
-    "vision": "4.1.0"
+    "tweet-to-html": "1.x.x",
+    "twitter": "1.x.x",
+    "vision": "5.x.x"
   },
   "devDependencies": {
-    "clean-css": "^3.4.12",
-    "npm-run-all": "^2.1.1",
-    "uglify-js": "^2.6.2"
+    "clean-css-cli": "4.x.x",
+    "npm-run-all": "4.x.x",
+    "uglify-js": "3.x.x"
   }
 }
