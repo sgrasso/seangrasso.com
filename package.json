@@ -17,7 +17,7 @@
   "author": "Sean Grasso",
   "license": "MIT",
   "engines": {
-    "node": ">=8.0"
+    "node": "8.x.x"
   },
   "dependencies": {
     "glue": "5.x.x",
