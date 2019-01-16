@@ -44,7 +44,7 @@ const startServer = async function () {
 			}
 		});
 
-		console.log('Server running at:', port, 'as', process.env.NODE_ENV);
+		console.log('Server running at:', manifest.server.port, 'as', process.env.NODE_ENV);
 
 	} catch (err) {
 		console.error(err);
