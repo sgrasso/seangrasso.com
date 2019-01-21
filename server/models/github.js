@@ -1,12 +1,12 @@
 'use strict';
 
-const http = require('http');
+const https = require('https');
 
 module.exports = (username) => {
 	const repo_uri = `https://api.github.com/users/${username}/repos`;
 	const gist_uri = `https://api.github.com/users/${username}/gists`;
 	return getRepos([repo_uri, gist_uri]).then(resp => {
-		return JSON.parse(resp);
+		return resp;
 	}).catch(e => {
 		console.log(e);
 	});
@@ -15,10 +15,18 @@ module.exports = (username) => {
 const getRepos = uris => {
 	return Promise.all(uris.map(uri => {
 		let parsedData = {};
-		http.get(uri, (res) => {
+		// let options = {
+		// 	url: 'https://api.github.com/users/sgrasso/repos?access_token=c70c3c398737fd5588482cd68817463822647197',
+		// 	headers: {
+		// 		Accept: 'application/vnd.github.v3+json'
+		// 	},
+		// 	token: 'c70c3c398737fd5588482cd68817463822647197'
+		// }
+		https.get('https://api.github.com/users/sgrasso/repos?access_token=c70c3c398737fd5588482cd68817463822647197', res => {
 			const statusCode = res.statusCode;
 			const contentType = res.headers['content-type'];
-			let rawData = '', error;
+			let rawData = '';
+			let error = null;
 
 			if (statusCode !== 200) {
 				error = new Error(`Request Failed.\n` +
@@ -29,21 +37,19 @@ const getRepos = uris => {
 			}
 			
 			if (error) {
-				console.log(error.message);
 				// consume response data to free up memory
 				res.resume();
 				throw error;
 			}
 
 			res.setEncoding('utf8');
-			res.on('data', (chunk) => rawData += chunk);
+			res.on('data', chunk => rawData += chunk);
 			res.on('end', () => {
+				console.log(rawData)
 				try {
 					parsedData += rawData;
-					console.log(parsedData);
 					return parsedData;
 				} catch (e) {
-					console.log(e.message);
 					throw e.message;
 				}
 			});

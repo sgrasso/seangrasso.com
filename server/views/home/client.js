@@ -47,7 +47,6 @@ $(document).ready(function() {
 		$('a[href*="' + navActive + '"]', '.nav').addClass('active');
 	}
 
-	console.log(navActive)
 	//Masonry Blog
 	$('.blog-post-holder', '#blog').isotope({
 		percentPosition: true,

@@ -2,11 +2,16 @@
 
 const fs = require('fs');
 const pug = require('pug');
+const github = require('../../models/github.js');
 
 module.exports = (request, reply) => {
 	const partial = './server/templates/partials/mainNav.pug';
-	console.log(partial)
 	const navHtml = (fs.existsSync(partial)) ? pug.renderFile(partial, {}) : '';
+
+	github('sgrasso').then(data => {
+		console.log(data)
+		return data;
+	});
 
 	request.server.methods.getTweets(
 		request.server.settings.app.twitter_screenName, 

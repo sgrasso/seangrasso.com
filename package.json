@@ -14,7 +14,7 @@
     "watch-css": "nodemon -e css -w public/css/styles.css -x 'npm run build-css'"
   },
   "private": true,
-  "author": "Sean Grasso",
+  "author": "Sean Grasso <sean.grasso@gmail.com> (http://www.seangrasso.com/)",
   "license": "MIT",
   "engines": {
     "node": ">=4.0"
