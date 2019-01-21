@@ -1,6 +1,6 @@
 {
   "name": "seangrasso.com",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Personal Site",
   "main": "server/index.js",
   "scripts": {
@@ -17,11 +17,12 @@
   "author": "Sean Grasso",
   "license": "MIT",
   "engines": {
-    "node": ">=8.0"
+    "node": "8.x.x"
   },
   "dependencies": {
     "glue": "5.x.x",
     "good": "8.x.x",
+    "good-file": "^6.0.1",
     "good-squeeze": "5.x.x",
     "hapi": "17.x.x",
     "inert": "5.x.x",

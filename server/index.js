@@ -5,13 +5,10 @@ const fs = require('fs');
 const Glue = require('glue');
 
 const twitterApi = require('./models/tweets.js');
-const manifest = require('../config/manifest.json');
+const manifest = require('../config/manifest.js');
 const options = {
 	relativeTo: __dirname + '/'
 };
-const port = (process.env.NODE_ENV === 'production') ? '/tmp/nginx.socket' : 3500;
-
-manifest.server.port = 3500;
 
 const startServer = async function () {
 	try {
@@ -47,7 +44,7 @@ const startServer = async function () {
 			}
 		});
 
-		console.log('Server running at:', port, 'as', process.env.NODE_ENV);
+		console.log('Server running at:', manifest.server.port, 'as', process.env.NODE_ENV);
 
 	} catch (err) {
 		console.error(err);
