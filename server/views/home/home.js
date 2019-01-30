@@ -10,10 +10,10 @@ module.exports = async (request, reply) => {
 
 	try {
 		const tweets = await request.server.methods.getTweets(
-			request.server.settings.app.twitter_screenName, 
-			request.server.settings.app.twitter 
+			request.server.settings.app.twitter_screenName,
+			request.server.settings.app.twitter
 		);
-			
+
 		const tLen = (tweets) ? tweets.length : 0;
 		
 		for (i; i < tLen; i++) {
