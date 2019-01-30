@@ -32,17 +32,7 @@ const startServer = async function () {
 			}
 		});
 
-		server.method('getTweets', twitterApi, {
-			cache: {
-				expiresIn: 86399999,
-				staleIn: 21599999,
-				staleTimeout: 100,
-				generateTimeout: 120000
-			},
-			generateKey: (screen_name, credentials) => {
-				return screen_name;
-			}
-		});
+		server.method('getTweets', twitterApi);
 
 		console.log('Server running at:', manifest.server.port, 'as', process.env.NODE_ENV);
 
