@@ -19,7 +19,7 @@ module.exports = async (request, reply) => {
 
 	let content = [],
 		i = 0,
-		tLen = (tweets) ? tweets.length : 0;
+		tLen = tweets.length;
 
 	for (i = 0; i < tLen; i++) {
 		content.push(tweets[i].html);
