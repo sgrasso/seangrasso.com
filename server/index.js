@@ -31,6 +31,8 @@ const startServer = async function () {
 			}
 		});
 
+		server.method('getTweets', twitterApi);
+
 		console.log('Server running at:', manifest.server.port, 'as', process.env.NODE_ENV);
 
 	} catch (err) {

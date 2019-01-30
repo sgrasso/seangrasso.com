@@ -5,25 +5,22 @@ const tweetToHTML = require('tweet-to-html');
 
 module.exports = (screen_name, credentials) => {
 	
-	return new Promise((resolve, reject) => {
-		const api = new Twitter(credentials);
-		const params = {
-			screen_name: screen_name
-		};
+	const api = new Twitter(credentials);
+	const params = {screen_name: screen_name};
 
-		api.get('statuses/user_timeline', params, (e, tweets, resp) => {
-			if (e) return reject(e);
-	
-			formatImageURLs(tweets).then(results => {
-				return resolve(tweetToHTML.parse(results));
-			}).catch(ee => {
-				return reject(ee);
-			});
+	api.get('statuses/user_timeline', params, (e, tweets, resp) => {
+		if (e) throw e;
+
+		formatImageURLs(tweets).then(results => {
+			return tweetToHTML.parse(results);
+		}).catch(er => {
+			throw er;
 		});
 	});
 }
 
 const formatImageURLs = tweets => {
+
 	// tweet-to-html converts photo links to img tags... don't really want that in the UI. Lets stop that and make links.
 	return Promise.all(tweets.map(tweet => {
 		if (tweet.extended_entities && tweet.extended_entities.media) {
