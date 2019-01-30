@@ -100,7 +100,7 @@ div.reactSkills.circlestat.svg-container > svg {
 div.dockerSkills.circlestat.svg-container>svg {
 	background: url(/public/img/docker_logo.png);
 	background-position-x: 60px;
-	background-position-y: 60px;
+	background-position-y: 65px;
 	background-repeat: no-repeat;
 }
 
