@@ -3,19 +3,20 @@
 const Twitter = require('twitter');
 const tweetToHTML = require('tweet-to-html');
 
-module.exports = (screen_name, credentials) => {
-	const api = new Twitter(credentials);
-	const params = {screen_name: screen_name};
+module.exports = (screen_name, credentials, done) => {
 
-	return Promise((resolve, reject) => {
-		api.get('statuses/user_timeline', params, (e, tweets, resp) => {
-			if (e) return reject(e);
-	
-			formatImageURLs(tweets).then(results => {
-				return resolve(tweetToHTML.parse(results));
-			}).catch(er => {
-				return reject(er);
-			});
+	const api = new Twitter(credentials);
+	const params = {
+		screen_name: screen_name
+	};
+
+	api.get('statuses/user_timeline', params, (e, tweets, resp) => {
+		if (e) return done(e, null);
+
+		formatImageURLs(tweets).then(results => {
+			return done(null, tweetToHTML.parse(results));
+		}).catch(e => {
+			return done(e, null);
 		});
 	});
 }

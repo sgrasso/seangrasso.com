@@ -3,29 +3,29 @@
 const fs = require('fs');
 const pug = require('pug');
 
-module.exports = async (request, reply) => {
+module.exports = (request, reply) => {
 	const partial = './server/templates/partials/mainNav.pug';
 	const navHtml = (fs.existsSync(partial)) ? pug.renderFile(partial, {}) : '';
-	let content = [], i = 0;
 
-	try {
-		const tweets = await request.server.methods.getTweets(
-			request.server.settings.app.twitter_screenName,
-			request.server.settings.app.twitter
-		);
+	request.server.methods.getTweets(
+		request.server.settings.app.twitter_screenName,
+		request.server.settings.app.twitter,
+		(e, tweets) => {
+			let content = [],
+				i = 0,
+				tLen = (tweets) ? tweets.length : 0;
 
-		const tLen = (tweets) ? tweets.length : 0;
-		
-		for (i; i < tLen; i++) {
-			content.push(tweets[i].html);
+			if (e) console.log(e);
+
+			for (i = 0; i < tLen; i++) {
+				content.push(tweets[i].html);
+			}
+
+			return reply.view('home', {
+				pageTitle: 'Home Page',
+				nav: navHtml,
+				tweets: content
+			});
 		}
-	} catch (err) {
-		console.log(err)
-	}
-
-	return reply.view('home', {
-		pageTitle: 'Home Page',
-		nav: navHtml,
-		tweets: content
-	});
+	);
 };
