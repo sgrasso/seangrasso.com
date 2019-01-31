@@ -16,7 +16,6 @@ module.exports = async (screen_name, credentials) => {
 		return tweetToHTML.parse(results);
 
 	} catch (er) {
-		console.log(er);
 		throw er;
 	};
 }
