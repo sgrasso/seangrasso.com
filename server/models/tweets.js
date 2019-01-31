@@ -9,11 +9,15 @@ module.exports = (screen_name, credentials) => {
 	const params = {screen_name: screen_name};
 
 	api.get('statuses/user_timeline', params, (e, tweets, resp) => {
-		if (e) throw e;
+		if (e) {
+			console.log(e);
+			throw e;
+		}
 
 		formatImageURLs(tweets).then(results => {
 			return tweetToHTML.parse(results);
 		}).catch(er => {
+			console.log(er);
 			throw er;
 		});
 	});
