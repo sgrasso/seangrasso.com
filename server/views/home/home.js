@@ -15,14 +15,14 @@ module.exports = async (request, reply) => {
 			request.server.settings.app.twitter_screenName, 
 			request.server.settings.app.twitter 
 		);
-		
+
 		const tLen = (tweets) ? tweets.length : 0;
 		
 		for (i; i < tLen; i++) {
 			content.push(tweets[i].html);
 		}
 	} catch (err) {
-		console.log(err.toString());
+		throw err;
 	}
 
 	reply.view('home', {
