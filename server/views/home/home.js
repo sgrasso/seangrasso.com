@@ -22,7 +22,7 @@ module.exports = async (request, reply) => {
 			content.push(tweets[i].html);
 		}
 	} catch (err) {
-		throw new Error(err);
+		console.log(err)
 	}
 
 	reply.view('home', {
