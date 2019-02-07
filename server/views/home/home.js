@@ -7,27 +7,25 @@ const twitterApi = require('../../models/tweets.js');
 module.exports = async (request, reply) => {
 	const partial = './server/templates/partials/mainNav.pug';
 	const navHtml = (fs.existsSync(partial)) ? pug.renderFile(partial, {}) : '';
+
 	let content = [];
 	let i = 0;
 
-	try {
-		const tweets = await request.server.methods.getTweets(
-			request.server.settings.app.twitter_screenName, 
-			request.server.settings.app.twitter 
-		);
+	twitterApi(
+		request.server.settings.app.twitter_screenName, 
+		request.server.settings.app.twitter,
+		(tweets) => {
+			const tLen = (tweets) ? tweets.length : 0;
 
-		const tLen = (tweets) ? tweets.length : 0;
-		
-		for (i; i < tLen; i++) {
-			content.push(tweets[i].html);
+			for (i; i < tLen; i++) {
+				content.push(tweets[i].html);
+			}
+			
+			return reply.view('home', {
+				pageTitle: 'Home Page',
+				nav: navHtml,
+				tweets: content
+			});
 		}
-	} catch (err) {
-		console.log(err)
-	}
-
-	reply.view('home', {
-		pageTitle: 'Home Page',
-		nav: navHtml,
-		tweets: content
-	});
+	);
 };

@@ -1,13 +1,13 @@
 module.exports = {
 	"server": {
-		"port": (process.env.NODE_ENV === 'production') ? '/tmp/nginx.socket' : 3500,
+		"port": (process.env.NODE_ENV === 'production') ? '/tmp/nginx.socket' : 4500,
 		"app": {
 			"twitter_screenName": "spgrasso",
 			"twitter": {
-				"consumer_key": process.env.twitter_consumer_key,
-				"consumer_secret": process.env.twitter_consumer_secret,
-				"access_token_key": process.env.twitter_access_token,
-				"access_token_secret": process.env.twitter_access_token_secret
+				consumer_key: '334411907-eUFgG3msJ2GygvSyX0YblqoTaGcJ28Dp4XZtcKES',
+				consumer_secret: '36BurXoAG3nEtg9inEONgz2vy5FKOXsyzyRR0Tw2KJy59',
+				access_token_key: '8jRdW2atXziHvudGnkkymvi6I',
+				access_token_secret: 'h7qZWpzOj59JSSrKY3demY31GUjj8dwEXKZ08Vk7oFWqykOKAM'
 			}
 		},
 		"router": {

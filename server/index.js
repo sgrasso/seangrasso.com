@@ -4,7 +4,6 @@ const path = require('path');
 const fs = require('fs');
 const Glue = require('glue');
 
-const twitterApi = require('./models/tweets.js');
 const manifest = require('../config/manifest.js');
 const options = {
 	relativeTo: __dirname + '/'
@@ -31,8 +30,6 @@ const startServer = async function () {
 				pretty: true
 			}
 		});
-
-		server.method('getTweets', twitterApi);
 
 		console.log('Server running at:', manifest.server.port, 'as', process.env.NODE_ENV);
 
