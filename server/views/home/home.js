@@ -10,6 +10,7 @@ module.exports = async (request, h) => {
 
 	let content = [];
 
+	console.log(request.server.settings.app.twitter)
 	const tweets = await twitterApi(request.server.settings.app.twitter_screenName, request.server.settings.app.twitter);
 
 	for (let i = 0; i < tweets.length; i++) {

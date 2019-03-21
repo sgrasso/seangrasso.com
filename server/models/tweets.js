@@ -3,7 +3,7 @@
 const Twitter = require('twitter');
 const tweetToHTML = require('tweet-to-html');
 
-module.exports = async (screen_name, credentials, cb) => {
+module.exports = async (screen_name, credentials) => {
 	const api = new Twitter(credentials);
 	const params = {screen_name: screen_name};
 	
