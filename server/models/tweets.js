@@ -3,26 +3,28 @@
 const Twitter = require('twitter');
 const tweetToHTML = require('tweet-to-html');
 
-module.exports = (screen_name, credentials, cb) => {
+module.exports = async (screen_name, credentials, cb) => {
 	const api = new Twitter(credentials);
 	const params = {screen_name: screen_name};
 	
-	api.get('statuses/user_timeline', params, async (error, tweets, response) => {
-		let results = [];
+	let results = [];
+	let tweets = [];
 
-		if (error) {
-			console.log(error);
-		} else {
-			try {
-				results = await formatImageURLs(tweets);
-				results = tweetToHTML.parse(results);
-			} catch (er) {
-				console.log(er);
-			};
-		}
+	try {
+		tweets = await api.get('statuses/user_timeline', params);
+	}
+	catch (e) {
+		console.log(error);
+	}
+	
+	try {
+		results = await formatImageURLs(tweets);
+		results = tweetToHTML.parse(results);
+	} catch (er) {
+		console.log(er);
+	};
 
-		cb(results);
-	});
+	return results;
 }
 
 const formatImageURLs = tweets => {
@@ -36,6 +38,7 @@ const formatImageURLs = tweets => {
 			}
 			tweet.extended_entities.media = [];
 		}
+
 		return tweet;
 	}));
 } 

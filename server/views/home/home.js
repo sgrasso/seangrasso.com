@@ -9,20 +9,12 @@ module.exports = async (request, h) => {
 	const navHtml = (fs.existsSync(partial)) ? pug.renderFile(partial, {}) : '';
 
 	let content = [];
-	let i = 0;
 
-	await twitterApi(
-		request.server.settings.app.twitter_screenName, 
-		request.server.settings.app.twitter,
-		(tweets) => {
-			const tLen = (tweets) ? tweets.length : 0;
+	const tweets = await twitterApi(request.server.settings.app.twitter_screenName, request.server.settings.app.twitter);
 
-			for (i; i < tLen; i++) {
-				content.push(tweets[i].html);
-			}
-			
-		}
-	);
+	for (let i = 0; i < tweets.length; i++) {
+		content.push(tweets[i].html);
+	}
 
 	return h.view('home', {
 		pageTitle: 'Home Page',
