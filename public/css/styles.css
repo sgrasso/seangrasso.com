@@ -911,7 +911,6 @@ a.mt-button {
 }
 .clients_logo {
     list-style: none outside none;
-    margin-left: -30px;
 }
 .clients_logo li{
     display: inline-block;
