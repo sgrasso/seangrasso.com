@@ -14,7 +14,7 @@ module.exports = async (screen_name, credentials, cb) => {
 		tweets = await api.get('statuses/user_timeline', params);
 	}
 	catch (e) {
-		console.log(error);
+		console.log(e);
 	}
 	
 	try {
