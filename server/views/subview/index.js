@@ -1,6 +1,9 @@
 'use strict';
 
-exports.register = (server, options) => {
+exports.name = "SubView Page";
+exports.version = "1.0";
+
+exports.register = async server => {
 
 	server.route({
 		path: '/{subview}',
@@ -9,6 +12,3 @@ exports.register = (server, options) => {
 	});
 
 };
-
-exports.name = "SubView Page";
-exports.version = "1.0";

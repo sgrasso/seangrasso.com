@@ -1,5 +1,8 @@
 'use strict';
 
+exports.name = "Home Page";
+exports.version = "1.0";
+
 exports.register = (server, options) => {
 
 	server.route({
@@ -9,6 +12,3 @@ exports.register = (server, options) => {
 	});
 
 };
-
-exports.name = "Home Page";
-exports.version = "1.0";

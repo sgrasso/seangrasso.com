@@ -7,15 +7,15 @@ module.exports = (screen_name, credentials, cb) => {
 	const api = new Twitter(credentials);
 	const params = {screen_name: screen_name};
 	
-	api.get('statuses/user_timeline', params, async function (error, tweets, response) {
+	api.get('statuses/user_timeline', params, async (error, tweets, response) => {
 		let results = [];
 
 		if (error) {
 			console.log(error);
 		} else {
 			try {
-				results = await formatImageURLs(tweets.errors);
-				results = tweetToHTML.parse(results)
+				results = await formatImageURLs(tweets);
+				results = tweetToHTML.parse(results);
 			} catch (er) {
 				console.log(er);
 			};

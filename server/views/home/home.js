@@ -4,14 +4,14 @@ const fs = require('fs');
 const pug = require('pug');
 const twitterApi = require('../../models/tweets.js');
 
-module.exports = async (request, reply) => {
+module.exports = async (request, h) => {
 	const partial = './server/templates/partials/mainNav.pug';
 	const navHtml = (fs.existsSync(partial)) ? pug.renderFile(partial, {}) : '';
 
 	let content = [];
 	let i = 0;
 
-	twitterApi(
+	await twitterApi(
 		request.server.settings.app.twitter_screenName, 
 		request.server.settings.app.twitter,
 		(tweets) => {
@@ -21,11 +21,12 @@ module.exports = async (request, reply) => {
 				content.push(tweets[i].html);
 			}
 			
-			return reply.view('home', {
-				pageTitle: 'Home Page',
-				nav: navHtml,
-				tweets: content
-			});
 		}
 	);
+
+	return h.view('home', {
+		pageTitle: 'Home Page',
+		nav: navHtml,
+		tweets: content
+	});
 };
