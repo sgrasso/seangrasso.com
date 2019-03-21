@@ -3,23 +3,32 @@
 const Twitter = require('twitter');
 const tweetToHTML = require('tweet-to-html');
 
-module.exports = (screen_name, credentials, done) => {
-
+module.exports = async (screen_name, credentials) => {
 	const api = new Twitter(credentials);
 	const params = {screen_name: screen_name};
+	
+	let results = [];
+	let tweets = [];
 
-	api.get('statuses/user_timeline', params, (e, tweets, resp) => {
-		if (e) return done(e, null);
+	try {
+		tweets = await api.get('statuses/user_timeline', params);
+	}
+	catch (e) {
+		console.log(e);
+	}
+	
+	try {
+		results = await formatImageURLs(tweets);
+		results = tweetToHTML.parse(results);
+	} catch (er) {
+		console.log(er);
+	};
 
-		formatImageURLs(tweets).then(results => {
-			return done(null, tweetToHTML.parse(results));
-		}).catch(e => {
-			return done(e, null);
-		});
-	});
+	return results;
 }
 
 const formatImageURLs = tweets => {
+
 	// tweet-to-html converts photo links to img tags... don't really want that in the UI. Lets stop that and make links.
 	return Promise.all(tweets.map(tweet => {
 		if (tweet.extended_entities && tweet.extended_entities.media) {
@@ -29,6 +38,7 @@ const formatImageURLs = tweets => {
 			}
 			tweet.extended_entities.media = [];
 		}
+
 		return tweet;
 	}));
 } 

@@ -1,13 +1,13 @@
 {
   "name": "seangrasso.com",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Personal Site",
   "main": "server/index.js",
   "scripts": {
     "start": "node .",
     "dev": "run-p watch-css watch-js watch-server",
     "build": "run-p build-js build-css",
-    "build-js": "uglifyjs public/js/lib/*.js server/views/**/client.js -v -o public/js/main.min.js",
+    "build-js": "uglifyjs public/js/lib/*.js server/views/home/client.js server/views/subview/client.js -v -o public/js/main.min.js",
     "build-css": "cat public/css/font-awesome/css/font-awesome.css public/css/fontello/css/fontello.css public/css/lib/*.css public/css/styles.css | cleancss -o public/css/styles.min.css",
     "watch-server": "nodemon --ignore public/ --ignore 'server/views/**/client.js' -x npm start",
     "watch-js": "nodemon -e js,pug -w public/js/lib -w 'server/views/**/client.js' -x 'npm run build-js'",
@@ -17,24 +17,24 @@
   "author": "Sean Grasso",
   "license": "MIT",
   "engines": {
-    "node": ">=4.0"
+    "node": "8.x.x"
   },
   "dependencies": {
-    "glue": "3.x.x",
-    "good": "7.x.x",
-    "good-console": "6.x.x",
-    "good-squeeze": "3.x.x",
-    "hapi": "13.5.3",
-    "inert": "3.x.x",
-    "pug": "2.0.0-beta6",
+    "glue": "5.x.x",
+    "good": "8.x.x",
+    "good-file": "^6.0.1",
+    "good-squeeze": "5.x.x",
+    "hapi": "17.x.x",
+    "inert": "5.x.x",
+    "pug": "2.x.x",
     "rotating-file-stream": "1.x.x",
-    "tweet-to-html": "1.0.2",
-    "twitter": "^1.7.1",
-    "vision": "4.1.0"
+    "tweet-to-html": "1.x.x",
+    "twitter": "1.x.x",
+    "vision": "5.x.x"
   },
   "devDependencies": {
-    "clean-css": "^3.4.12",
-    "npm-run-all": "^2.1.1",
-    "uglify-js": "^2.6.2"
+    "clean-css-cli": "4.x.x",
+    "npm-run-all": "4.x.x",
+    "uglify-js": "3.x.x"
   }
 }
