@@ -26,7 +26,7 @@
     "good-squeeze": "5.x.x",
     "hapi": "17.x.x",
     "inert": "5.x.x",
-    "pug": "2.x.x",
+    "pug": "3.x.x",
     "rotating-file-stream": "1.x.x",
     "tweet-to-html": "1.x.x",
     "twitter": "1.x.x",
